@@ -1,4 +1,4 @@
 package com.project.bean;
 
-public class Test {
+public class EventBean {
 }

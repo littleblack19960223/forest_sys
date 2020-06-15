@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE configuration
+        PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-config.dtd">
+
+<configuration>
+      <!--导入外部的配置文件-->
+      <properties resource="db.properties"></properties>
+
+    <!--配置mybatis的运行行为-->
+    <settings>
+        <!--开启缓存：默认就是 true-->
+        <setting name="cacheEnabled" value="true"/>
+
+        <setting name="logImpl" value="LOG4J"></setting>
+    </settings>
+
+    <typeAliases>
+        <package name="bean"></package>
+    </typeAliases>
+
+    <!--配置mybatis的分页插件
+     原理就是 去拦截要执行的sql语句 并在后面自动帮你拼接 limit ? ?
+    -->
+  <plugins>
+    <!-- com.github.pagehelper为PageHelper类所在包名-->
+    <plugin interceptor="com.github.pagehelper.PageInterceptor">
+        <!--告诉分页插件 使用的诗mysql数据库 -->
+        <property name="helperDialect" value="mysql"/>
+    </plugin>
+</plugins>
+
+    <!--配置的使用的环境  默认是  开发环将-->
+    <environments default="development">
+        <!--开发环境-->
+        <environment id="development">
+            <!--事务管理器： 使用 jdbc的事务管理-->
+            <transactionManager type="JDBC"/>
+            <!--数据源    POOLED ：数据库连接池-->
+            <dataSource type="POOLED">
+                <!--${}：占位符： 作用：就是获得外部配置文件（db.properties）的键来获得值-->
+                <property name="driver" value="${mysql.driver}"/>
+                <property name="url" value="${mysql.url}"/>
+                <property name="username" value="${mysql.user}"/>
+                <property name="password" value="${mysql.password}"/>
+                <property name="poolMaximumActiveConnections" value="20"/>
+                <property name="poolMaximumIdleConnections" value="20"/>
+            </dataSource>
+    </environment>
+    </environments>
+
+    <mappers>
+
+    </mappers>
+</configuration>

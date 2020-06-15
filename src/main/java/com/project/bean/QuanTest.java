@@ -1,8 +1,7 @@
 package com.project.bean;
 
-public class Test {
+public class QuanTest {
     public static void main(String[] args) {
-        System.out.println("测试");
+        s
     }
-
 }

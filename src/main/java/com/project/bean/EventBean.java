@@ -6,6 +6,7 @@ import java.sql.Date;
 
 @Data
 public class EventBean {
+
     private Integer eventId;
 
     private Date date;

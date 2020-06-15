@@ -8,6 +8,7 @@ import org.apache.ibatis.session.SqlSessionFactory;
 import org.apache.ibatis.session.SqlSessionFactoryBuilder;
 
 public class MyBatisUtil {
+
     private static SqlSessionFactory sqlSessionFactory = null;
 
     static {
@@ -16,7 +17,6 @@ public class MyBatisUtil {
         // 加载配置文件
         try {
             is = Resources.getResourceAsStream(resource);
-            // 建造者模式
             sqlSessionFactory = new SqlSessionFactoryBuilder().build(is);
         } catch (Exception e) {
             e.printStackTrace();

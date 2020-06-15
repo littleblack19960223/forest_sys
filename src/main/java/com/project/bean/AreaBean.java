@@ -17,6 +17,6 @@ public class AreaBean {
 
     private String tree;
 
-    private List<ClassesBean> list;
+    private ClassesBean classesBean;
 
 }

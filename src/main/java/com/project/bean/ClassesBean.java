@@ -2,6 +2,8 @@ package com.project.bean;
 
 import lombok.Data;
 
+import java.sql.Date;
+
 @Data
 public class ClassesBean {
     private Integer classId;
@@ -15,5 +17,7 @@ public class ClassesBean {
     private Integer num;
 
     private AreaBean areaBean;
+
+    private Date creat;
 
 }

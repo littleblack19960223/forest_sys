@@ -25,4 +25,8 @@ public class EventBean {
     private Integer disasterType;
 
     private String picture;
+
+    private AreaBean areaBean;
+
+
 }

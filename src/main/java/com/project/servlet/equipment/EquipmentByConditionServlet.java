@@ -18,8 +18,8 @@ import java.util.Map;
 /**
  * 药剂、器械。条件查询
  */
-@WebServlet(name = "ConditionQueryServlet" ,value = "/ConditionQueryInfo")
-public class ConditionQueryServlet extends HttpServlet {
+@WebServlet(name = "EquipmentByConditionServlet" ,value = "/equipmentByCondition")
+public class EquipmentByConditionServlet extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
         String name = request.getParameter("name");

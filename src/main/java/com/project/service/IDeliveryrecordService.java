@@ -23,18 +23,25 @@ public interface IDeliveryrecordService {
     public PageInfo<DeliveryrecordBean> showDeliveryrecordInfo(String currentPage, String pageSize);
 
     /**
+     * 查询出库信息
+     * @param map 查询条件
+     * @return 符合条件集合
+     */
+    public List<DeliveryrecordBean>  queryDeliveryrecordByCondition(Map<String,String> map);
+
+
+    /**
      * 添加出库信息
      * @param deliveryrecordEquipmentBean 出库信息
      * @return 受影响行数
      */
     public int addDeliveryrecordInfo(DeliveryrecordEquipmentBean deliveryrecordEquipmentBean);
 
-    /**
-     * 查询出库信息
-     * @param map 查询条件
-     * @return 符合条件集合
-     */
-    public List<DeliveryrecordBean>  queryDeliveryrecordByCondition(Map<String,String> map);
+
+    //得到领用小班    --
+    //出库，添加出库信息 --
+    //物品信息， get
+    //条件查询物品信息，get
 
 
 }

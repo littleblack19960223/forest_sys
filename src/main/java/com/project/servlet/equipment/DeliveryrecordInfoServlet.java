@@ -15,10 +15,10 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
 /**
- *设备出库信息
+ *初始化、设备出库信息
  */
-@WebServlet(name = "DeliveryRecordInfoServlet",value = "/DeliveryRecordInfo")
-public class DeliveryRecordInfoServlet extends HttpServlet {
+@WebServlet(name = "DeliveryrecordInfoServlet",value = "/DeliveryRecordInfo")
+public class DeliveryrecordInfoServlet extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
         String currentPage = request.getParameter("currentPage");

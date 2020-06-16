@@ -43,8 +43,10 @@ public class DeliveryrecordServiceImpl implements IDeliveryrecordService {
         return 0;
     }
 
+
     @Override
     public List<DeliveryrecordBean> queryDeliveryrecordByCondition(Map<String, String> map) {
-        return null;
+
+        return iDeliveryrecordDao.getDeliveryrecordByCondition(map);
     }
 }

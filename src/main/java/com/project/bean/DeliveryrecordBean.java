@@ -4,7 +4,8 @@ import lombok.Data;
 
 /**
  * 药剂机械出库记录
- */@Data
+ */
+@Data
 public class DeliveryrecordBean {
 
     //主键id

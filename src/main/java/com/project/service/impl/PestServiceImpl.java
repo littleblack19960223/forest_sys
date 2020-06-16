@@ -7,6 +7,7 @@ import com.project.util.MyBatisUtil;
 import org.apache.ibatis.session.SqlSession;
 
 import java.util.List;
+import java.util.Map;
 
 public class PestServiceImpl implements IPestService {
     @Override
@@ -31,5 +32,14 @@ public class PestServiceImpl implements IPestService {
         SqlSession sqlSession= MyBatisUtil.getSession();
         IPestDao iPestDao=sqlSession.getMapper(IPestDao.class);
         return iPestDao.getDetailById(id);
+    }
+
+    @Override
+    public List<PestBean> showPestByCondition(Map<String, String> conditon) {
+        SqlSession sqlSession= MyBatisUtil.getSession();
+        IPestDao iPestDao=sqlSession.getMapper(IPestDao.class);
+
+
+        return iPestDao.getPestListByNameOrHost(conditon);
     }
 }

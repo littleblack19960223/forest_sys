@@ -15,7 +15,7 @@ public interface IDeliveryrecordDao {
      * @return 出库信息集合.
      */
     @Select("  SELECT " +
-            " dr.t_date as data, " +
+            " dr.t_date as date, " +
             " cla.classes_name as classeName, " +
             " dr.t_user as username " +
             " from t_deliveryrecord as dr " +

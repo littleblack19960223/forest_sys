@@ -19,6 +19,7 @@ public interface IDeliveryrecordService {
      * @param pageSize 每页显示数量
      * @return 分页后信息集合
      */
+
     public PageInfo<DeliveryrecordBean> showDeliveryrecordInfo(String currentPage, String pageSize);
 
     /**

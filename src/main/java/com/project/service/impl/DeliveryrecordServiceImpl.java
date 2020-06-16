@@ -24,13 +24,14 @@ public class DeliveryrecordServiceImpl implements IDeliveryrecordService {
     @Override
     public PageInfo<DeliveryrecordBean> showDeliveryrecordInfo(String currentPage, String pageSize) {
 
-       PageInfo<DeliveryrecordBean> pageInfo = null;
 
-       //得到所有出库信息
-        List<DeliveryrecordBean> deliveryrecordInfo = iDeliveryrecordDao.getDeliveryrecordInfo();
+       PageInfo<DeliveryrecordBean> pageInfo = null;
 
         //进行分页
         PageHelper.startPage(Integer.valueOf(currentPage),Integer.valueOf(pageSize));
+
+       //得到所有出库信息
+        List<DeliveryrecordBean> deliveryrecordInfo = iDeliveryrecordDao.getDeliveryrecordInfo();
 
         pageInfo = new PageInfo<DeliveryrecordBean>(deliveryrecordInfo);
 

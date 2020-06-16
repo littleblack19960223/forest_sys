@@ -6,28 +6,54 @@ import java.sql.Date;
 
 @Data
 public class EventBean {
-
+    /**
+     * 事件id
+     * */
     private Integer eventId;
-
+    /**
+     * 事件时间
+     * */
     private Date date;
-
+    /**
+     * 事件防止措施
+     * */
     private String prevention;
-
+    /**
+     * 事件状态
+     * */
     private Integer state;
-
+    /**
+     * 事件描述
+     * */
     private String describe;
-
+    /**
+     * 事件损失
+     * */
     private float loss;
-
+    /**
+     * 事件影响面积
+     * */
     private float area;
-
+    /**
+     * 事件发现途径
+     * */
     private Integer pathWay;
-
+    /**
+     * 事件灾害类型
+     * */
     private Integer disasterType;
-
+    /**
+     * 事件图片
+     * */
     private String picture;
-
+    /**
+     * 事件发生位置
+     * */
     private AreaBean areaBean;
+    /**
+     * 事件是否申请专家会商
+     * */
+    private Integer type;
 
 
 }

@@ -2,7 +2,7 @@
 <!DOCTYPE mapper
         PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.project.dao">
+<mapper namespace="com.project.dao.ExpertsDao">
     <resultMap id="ExpertsBeanMap" type="com.project.bean.ExpertsBean">
         <id column="experts_id" property="id"></id>
         <result column="experts_name" property="expertsName"></result>
@@ -17,7 +17,7 @@
         <result column="mailbox" property="mailbox"></result>
     </resultMap>
 
-    <select id="ExpertsDao">
+    <select id="show" resultMap="ExpertsBeanMap">
        SELECT experts_id,experts_name,work,specialties,duty,telephone FROM t_experts where TRUE
         <if test="name != null">
             and  experts_name  like '${name}'

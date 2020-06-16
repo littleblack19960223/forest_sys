@@ -1,6 +1,7 @@
 package com.project.servlet.experts;
 
 import com.github.pagehelper.PageInfo;
+import com.google.gson.Gson;
 import com.project.bean.ExpertsBean;
 import com.project.service.ExpertsService;
 import com.project.service.impl.ExpertsServiceImpl;
@@ -43,6 +44,9 @@ public class showExpertsServlet extends HttpServlet {
         map.put("work",work);
         ExpertsService expertsService = new ExpertsServiceImpl();
         PageInfo<ExpertsBean> show = expertsService.show(map);
+        Gson gson = new Gson();
+        String s = gson.toJson(show);
+        response.getWriter().print(s);
 
 
     }

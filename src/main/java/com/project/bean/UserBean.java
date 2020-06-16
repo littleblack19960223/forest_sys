@@ -25,7 +25,7 @@ public class UserBean {
     /**
      * 用户权限
      */
-    private Integer usergrade;
+    private String usergrade;
     /**
      * 真实姓名
      */

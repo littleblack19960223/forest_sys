@@ -67,5 +67,5 @@ public interface IPestDao {
      * @return  虫害集合
      */
     @SelectProvider(type = PestSqlProvider.class,method = "handleSql")
-    public List<PestBean> getPestListByNameOrHost(Map<String,String> condition);
+    public List<PestBean> getPestListByNameOrHost(Map<String,String> condition2);
 }

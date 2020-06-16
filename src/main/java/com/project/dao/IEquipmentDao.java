@@ -48,6 +48,7 @@ public interface IEquipmentDao {
      * @param map 条件集合
      * @return 符合条件的集合
      */
+
     public List<EquipmentBean> getEquipmentByconditions(Map<String, String> map);
 
 

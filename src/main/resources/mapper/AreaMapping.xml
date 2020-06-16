@@ -5,7 +5,33 @@
 
 <mapper namespace="com.project.dao.IAreaDao">
 
+    <resultMap id="areaMap" type="AreaBean">
+        <id column="area_id" property="areaId"></id>
+        <result column="area_name" property="name"></result>
+        <result column="area_goodTree" property="goodTree"></result>
+        <result column="area_tree" property="tree"></result>
+        <result column="area_type" property="type"></result>
+        <association property="classesBean" javaType="ClassesBean">
+            <id column="classes_id" property="classId"></id>
+            <result column="classes_name" property="name"></result>
+            <result column="classes_person" property="person"></result>
+            <result column="classes_phone" property="phone"></result>
+            <result column="classes_num" property="num"></result>
+            <result column="classes_date" property="creat"></result>
+        </association>
+    </resultMap>
 
+    <select id="getAreaByItem" resultMap="areaMap">
+
+    </select>
+
+    <insert id="addArea" parameterType="AreaBean">
+        insert into t_area values (null,#{name},#{goodTree},#{tree},#{type})
+    </insert>
+
+    <select id="getAllArea" resultMap="areaMap">
+        select * from t_area join t_classes WHERE t_area.area_id = t_classes.area_id
+    </select>
 
 </mapper>
 

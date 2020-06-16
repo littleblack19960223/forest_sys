@@ -16,7 +16,7 @@
     </settings>
 
     <typeAliases>
-        <package name="bean"></package>
+        <package name="com.project.bean"></package>
     </typeAliases>
 
     <!--配置mybatis的分页插件
@@ -50,6 +50,6 @@
     </environments>
 
     <mappers>
-
+        <mapper resource="mapper/AreaMapping.xml"></mapper>
     </mappers>
 </configuration>

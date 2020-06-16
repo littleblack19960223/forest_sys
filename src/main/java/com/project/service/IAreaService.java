@@ -10,5 +10,4 @@ public interface IAreaService {
     public int addArea(AreaBean areaBean);
 
     public List<AreaBean> getAllArea();
-
 }

@@ -1,11 +1,14 @@
 package com.project.dao;
 
 import com.project.bean.PestBean;
+import com.project.sqlProvider.PestSqlProvider;
 import org.apache.ibatis.annotations.Insert;
 import org.apache.ibatis.annotations.Param;
 import org.apache.ibatis.annotations.Select;
+import org.apache.ibatis.annotations.SelectProvider;
 
 import java.util.List;
+import java.util.Map;
 
 /**
  * 虫害一览
@@ -58,4 +61,11 @@ public interface IPestDao {
             "adult_img as adultImg " +
             " from t_pest where pest_id =#{id}")
     public PestBean getDetailById(@Param("id") int id);
+
+    /**
+     * 根据名称或宿主查找虫害集合
+     * @return  虫害集合
+     */
+    @SelectProvider(type = PestSqlProvider.class,method = "handleSql")
+    public List<PestBean> getPestListByNameOrHost(Map<String,String> condition2);
 }

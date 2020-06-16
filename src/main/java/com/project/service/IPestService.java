@@ -29,7 +29,7 @@ public interface IPestService {
     /**
      * 根据条件查找虫害信息
      * @param conditon 查找条件
-     * @return  虫害对象
+     * @return  虫害对象集合
      */
     public List<PestBean>  showPestByCondition(Map<String,String> conditon);
 }

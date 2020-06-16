@@ -13,6 +13,9 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
+/**
+ * @author 23
+ */
 @WebServlet(name = "AddUserServelet", value = "/adduser")
 public class AddUserServelet extends HttpServlet {
 

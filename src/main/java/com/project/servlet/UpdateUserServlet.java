@@ -11,6 +11,9 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
+/**
+ * @author 23
+ */
 @WebServlet(name = "UpdateUserServlet",value = "/updateuser")
 public class UpdateUserServlet extends HttpServlet {
     @Override

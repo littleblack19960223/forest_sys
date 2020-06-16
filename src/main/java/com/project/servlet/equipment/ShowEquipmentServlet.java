@@ -16,8 +16,8 @@ import java.io.IOException;
 /**
  * 显示分页、药剂器械信息
  */
-@WebServlet(name = "showEquipmentServlet" ,value = "/showEquipmentInfo")
-public class showEquipmentServlet extends HttpServlet {
+@WebServlet(name = "ShowEquipmentServlet" ,value = "/showEquipmentInfo")
+public class ShowEquipmentServlet extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
         String currentPage = request.getParameter("currentPage");

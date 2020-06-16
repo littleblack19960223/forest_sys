@@ -3,6 +3,7 @@ package com.project.bean;
 /**
  * 虫害一览bean
  */
+
 public class PestBean {
 //     id
     private int id;

@@ -29,5 +29,19 @@
             and  work  like '${work}'
         </if>
     </select>
+    <select id="lookExperts" resultMap="ExpertsBeanMap">
+        SELECT experts_id,experts_name,date,sex,specialties,telephone,site,head,duty,work,mailbox from t_experts WHERE experts_id=#{id}
+
+    </select>
+    <insert id="addExperts" parameterType="com.project.bean.ExpertsBean">
+        insert into t_experts VALUES(NULL,#{expertsName},#{date},#{sex},#{specialties},#{telephone},#{site},#{head},#{duty},#{work},#{mailbox})
+    </insert>
+    <select id="queryName" resultType="int">
+        select  COUNT(*) from t_experts where experts_name=#{name}
+    </select>
+
+    <update id="updateExperts" parameterType="com.project.bean.ExpertsBean">
+        update t_experts set experts_name=#{expertsName},date=#{date},sex=#{sex},specialties=#{specialties},telephone=#{telephone},site=#{site},head=#{head},duty=#{duty},work=#{work},mailbox=#{mailbox} where experts_id=#{id}
+    </update>
 
 </mapper>

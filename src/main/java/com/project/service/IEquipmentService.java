@@ -1,38 +1,39 @@
 package com.project.service;
 
 import com.github.pagehelper.PageInfo;
-import com.project.bean.DeliveryrecordBean;
-import com.project.bean.DeliveryrecordEquipmentBean;
+import com.project.bean.EquipmentBean;
 
 import java.util.List;
 import java.util.Map;
 
+
 /**
- * 药剂机械出库管理servlet
+ * 药剂、器械管理service
  */
 public interface IEquipmentService {
 
-
     /**
-     * 初始化，显示分页后出库信息
-     * @param current 当前页数
+     * 分页显示。药剂、器械 信息
+     * @param currentPage 当前页数
      * @param pageSize 每页显示数量
-     * @return 分页后信息集合
+     * @return 分页后的药剂、器械信息
      */
-    public PageInfo<DeliveryrecordBean> showDeliveryrecordInfo(String current,String pageSize);
+    public PageInfo<EquipmentBean> showEquipmentAll(String currentPage, String pageSize);
+
 
     /**
-     * 添加出库信息
-     * @param deliveryrecordEquipmentBean 出库信息
-     * @return 受影响行数
+     * 根据条件查询药剂信息
+     * @param map 条件集合
+     * @return 符合条件的list集合
      */
-    public int addDeliveryrecordInfo(DeliveryrecordEquipmentBean deliveryrecordEquipmentBean);
+    public List<EquipmentBean> queryEquipmentByCondition(Map<String,String> map);
+
 
     /**
-     * 查询出库信息
-     * @param map 查询条件
-     * @return 符合条件集合
+     * 添加药剂
+     * @param equipmentBean 添加的药剂信息
+     * @return 添加后，受影响行数
      */
-    public List<DeliveryrecordBean>  queryDeliveryrecordByCondition(Map<String,String> map);
+    public int addEquipment(EquipmentBean equipmentBean);
 
 }

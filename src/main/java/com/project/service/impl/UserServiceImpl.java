@@ -30,7 +30,6 @@ public class UserServiceImpl implements IUserService {
             sqlSession.close();
         }
 
-
         return num;
     }
 }

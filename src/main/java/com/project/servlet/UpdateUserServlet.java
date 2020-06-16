@@ -41,8 +41,6 @@ public class UpdateUserServlet extends HttpServlet {
 //
 //        response.getWriter().print(json);
 
-
-
     }
 
     @Override

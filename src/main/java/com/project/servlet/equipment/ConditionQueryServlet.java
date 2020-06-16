@@ -18,7 +18,7 @@ import java.util.Map;
 /**
  * 药剂、器械。条件查询
  */
-@WebServlet(name = "ConditionQueryServlet")
+@WebServlet(name = "ConditionQueryServlet" ,value = "/ConditionQueryInfo")
 public class ConditionQueryServlet extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 

@@ -1,9 +1,11 @@
 package com.project.dao;
 
 import com.project.bean.EquipmentBean;
+import com.project.dao.sqlProvider.EquipmentSqlProvider;
 import org.apache.ibatis.annotations.Insert;
 import org.apache.ibatis.annotations.Param;
 import org.apache.ibatis.annotations.Select;
+import org.apache.ibatis.annotations.SelectProvider;
 
 import java.util.List;
 import java.util.Map;
@@ -48,7 +50,7 @@ public interface IEquipmentDao {
      * @param map 条件集合
      * @return 符合条件的集合
      */
-
+    @SelectProvider(type = EquipmentSqlProvider.class,method = "showEquipmentByConditions")
     public List<EquipmentBean> getEquipmentByconditions(Map<String, String> map);
 
 

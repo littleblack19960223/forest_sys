@@ -1,6 +1,6 @@
 package com.project.dao;
 
-import com.project.bean.Deliveryrecord;
+import com.project.bean.DeliveryrecordBean;
 
 import java.util.List;
 
@@ -13,13 +13,13 @@ public interface IDeliveryrecordDao {
      * 得到所有出库信息
      * @return 出库信息集合.
      */
-    public List<Deliveryrecord> getDeliveryrecordInfo();
+    public List<DeliveryrecordBean> getDeliveryrecordInfo();
 
     /**
      * 添加出库信息
-     * @param deliveryrecord 出库信息
+     * @param deliveryrecordBean 出库信息
      * @return 受影响行数
      */
-    public int addDeliveryrecord(Deliveryrecord deliveryrecord);
+    public int addDeliveryrecord(DeliveryrecordBean deliveryrecordBean);
 
 }

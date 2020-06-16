@@ -4,21 +4,21 @@ package com.project.bean;
  * 鼠害一览bean
  */
 public class RatsBean {
-//  id
+//       id
     private int id;
-//    名称
+//      名称
     private String name;
-//    食物
+//      食物
     private String food;
-//    主要危害
+//      主要危害
     private String harm;
-//    繁殖
+//      繁殖
     private String breed;
-//    天敌
+//      天敌
     private String enemy;
-//    主要措施
+//      主要措施
     private String measure;
-//    鼠害图片
+//      鼠害图片
     private String ratsImg;
 
     public int getId() {

@@ -4,9 +4,9 @@ package com.project.bean;
  * 虫害一览bean
  */
 public class PestBean {
-//    id
+//     id
     private int id;
-//    虫害名称
+//   名称
     private String name;
 //    虫害寄主
     private String host;

@@ -6,7 +6,7 @@ package com.project.bean;
 public class PestBean {
 //    id
     private int id;
-//    虫害名称
+//   名称
     private String name;
 //    虫害寄主
     private String host;

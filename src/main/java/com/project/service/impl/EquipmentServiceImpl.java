@@ -18,10 +18,12 @@ public class EquipmentServiceImpl implements IEquipmentService {
 
     SqlSession sqlSession = MyBatisUtil.getSession();
 
+    //dao
+    IEquipmentDao iEquipmentDao = sqlSession.getMapper(IEquipmentDao.class);
+
     @Override
     public PageInfo<EquipmentBean> showEquipmentAll(String currentPage, String pageSize) {
 
-        IEquipmentDao iEquipmentDao = sqlSession.getMapper(IEquipmentDao.class);
 
         //使用 pagehelper 分页插件
         PageInfo<EquipmentBean> pageInfo = null;
@@ -40,11 +42,27 @@ public class EquipmentServiceImpl implements IEquipmentService {
 
     @Override
     public List<EquipmentBean> queryEquipmentByCondition(Map<String, String> map) {
-        return null;
+
+        return iEquipmentDao.getEquipmentByconditions(map);
     }
+
 
     @Override
     public int addEquipment(EquipmentBean equipmentBean) {
-        return 0;
+
+        int n = 0;
+
+        try {
+            n = iEquipmentDao.addEquipmentBean(equipmentBean);
+            sqlSession.commit();
+        } catch (Exception e) {
+            e.printStackTrace();
+            sqlSession.rollback();
+        } finally {
+            sqlSession.close();
+        }
+
+        return n;
+
     }
 }

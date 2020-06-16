@@ -1,7 +1,7 @@
 package com.project.dao;
 
 import com.project.bean.PestBean;
-import com.project.sqlProvider.PestSqlProvider;
+import com.project.dao.sqlProvider.PestSqlProvider;
 import org.apache.ibatis.annotations.Insert;
 import org.apache.ibatis.annotations.Param;
 import org.apache.ibatis.annotations.Select;

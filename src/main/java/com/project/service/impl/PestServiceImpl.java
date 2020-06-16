@@ -16,4 +16,20 @@ public class PestServiceImpl implements IPestService {
 
         return iPestDao.getAllPest();
     }
+
+    @Override
+    public int addNewPest(PestBean pestBean) {
+        SqlSession sqlSession= MyBatisUtil.getSession();
+        IPestDao iPestDao=sqlSession.getMapper(IPestDao.class);
+        int n=iPestDao.addNewPest(pestBean);
+        sqlSession.commit();
+        return n;
+    }
+
+    @Override
+    public PestBean showDetail(int id) {
+        SqlSession sqlSession= MyBatisUtil.getSession();
+        IPestDao iPestDao=sqlSession.getMapper(IPestDao.class);
+        return iPestDao.getDetailById(id);
+    }
 }

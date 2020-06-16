@@ -51,5 +51,6 @@
 
     <mappers>
         <mapper resource="mapper/AreaMapping.xml"></mapper>
+        <mapper resource="mapper/pestMapping.xml"></mapper>
     </mappers>
 </configuration>

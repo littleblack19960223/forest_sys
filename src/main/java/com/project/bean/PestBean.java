@@ -4,7 +4,7 @@ package com.project.bean;
  * 虫害一览bean
  */
 public class PestBean {
-//    虫害id
+//    id
     private int id;
 //    虫害名称
     private String name;

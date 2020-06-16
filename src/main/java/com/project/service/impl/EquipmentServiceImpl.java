@@ -42,7 +42,8 @@ public class EquipmentServiceImpl implements IEquipmentService {
 
     @Override
     public List<EquipmentBean> queryEquipmentByCondition(Map<String, String> map) {
-        return null;
+
+        return iEquipmentDao.getEquipmentByconditions(map);
     }
 
 

@@ -4,7 +4,7 @@ package com.project.bean;
  * 鼠害一览bean
  */
 public class RatsBean {
-//      id
+//       id
     private int id;
 //      名称
     private String name;

@@ -5,7 +5,7 @@ package com.project.bean;
  * 病害一览bean
  */
 public class DiseaseBean {
-//   id
+//    id
     private int id;
 //    名称
     private String name;

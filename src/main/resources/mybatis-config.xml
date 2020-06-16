@@ -49,7 +49,7 @@
         </environment>
     </environments>
 
-    <mappers> 
+    <mappers>
         <mapper resource="mapper/AreaMapping.xml"></mapper>
         <mapper resource="mapper/pestMapping.xml"></mapper>
         <mapper class="com.project.dao.IEquipmentDao"></mapper>

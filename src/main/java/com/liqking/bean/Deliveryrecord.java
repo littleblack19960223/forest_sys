@@ -17,4 +17,5 @@ public class Deliveryrecord {
     //日期
     private String date;
 
+
 }

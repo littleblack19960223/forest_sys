@@ -1,4 +1,4 @@
-package com.project.sqlProvider;
+package com.project.dao.sqlProvider;
 
 import java.util.Map;
 
@@ -12,7 +12,7 @@ public class DiseaseSqlProvider {
                 "disease_cause as cause," +
                 "disease_symptom as symptom," +
                 "disease_measure as measure," +
-                "img_path as img," +
+                "img_path as img" +
                 " from t_disease where 1=1 ";
 
         String value1=map.get("diseaseName");
@@ -21,7 +21,7 @@ public class DiseaseSqlProvider {
         if (value1 !=null && !value1.equals(" ")){
             sql+=" and disease_name like '%"+value1+"%'";
         }
-        if (value2!=null && !value2.equals(" ")){
+        if (value2 !=null && !value2.equals(" ")){
             sql+=" and disease_symptom like '%"+value2+"%'";
         }
         return sql;

@@ -45,10 +45,10 @@ public class DiseaseServiceImpl implements IDiseaseService {
     }
 
     @Override
-    public List<DiseaseBean> showPestByCondition(Map<String, String> conditon) {
+    public List<DiseaseBean> showDiseaseByCondition(Map<String, String> condition) {
         SqlSession sqlSession= MyBatisUtil.getSession();
         IDiseaseDao iDiseaseDao=sqlSession.getMapper(IDiseaseDao.class);
 
-        return iDiseaseDao.getPestListByNameOrSymptom(conditon);
+        return iDiseaseDao.getDiseaseListByNameOrSymptom(condition);
     }
 }

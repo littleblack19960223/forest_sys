@@ -31,5 +31,5 @@ public interface IDiseaseService {
      * @param conditon 查找条件
      * @return  病害对象集合
      */
-    public List<DiseaseBean>  showPestByCondition(Map<String,String> conditon);
+    public List<DiseaseBean>  showDiseaseByCondition(Map<String,String> conditon);
 }

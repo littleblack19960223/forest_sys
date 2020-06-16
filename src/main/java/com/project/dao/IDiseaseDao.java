@@ -1,9 +1,7 @@
 package com.project.dao;
 
 import com.project.bean.DiseaseBean;
-import com.project.bean.PestBean;
-import com.project.sqlProvider.DiseaseSqlProvider;
-import com.project.sqlProvider.PestSqlProvider;
+import com.project.dao.sqlProvider.DiseaseSqlProvider;
 import org.apache.ibatis.annotations.Insert;
 import org.apache.ibatis.annotations.Param;
 import org.apache.ibatis.annotations.Select;
@@ -24,8 +22,8 @@ public interface IDiseaseDao {
             "disease_cause as cause," +
             "disease_symptom as symptom," +
             "disease_measure as measure," +
-            "img_path as img," +
-            " from t_disease")
+            "img_path as img" +
+            " from t_disease ")
     public List<DiseaseBean> getAllDisease();
 
     /**
@@ -63,5 +61,5 @@ public interface IDiseaseDao {
      * @return  病害集合
      */
     @SelectProvider(type = DiseaseSqlProvider.class,method = "handleSql")
-    public List<DiseaseBean> getPestListByNameOrSymptom(Map<String,String> condition2);
+    public List<DiseaseBean> getDiseaseListByNameOrSymptom(Map<String,String> condition2);
 }

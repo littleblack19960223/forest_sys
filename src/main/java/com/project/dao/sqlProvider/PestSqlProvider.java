@@ -1,4 +1,4 @@
-package com.project.sqlProvider;
+package com.project.dao.sqlProvider;
 
 import java.util.Map;
 

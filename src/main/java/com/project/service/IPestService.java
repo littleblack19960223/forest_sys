@@ -10,4 +10,10 @@ public interface IPestService {
      * @return 所有虫害信息的集合
      */
     public List<PestBean> showAllPest();
+
+    /**
+     * 添加新虫害信息
+     * @return 影响行数
+     */
+    public int addNewPest(PestBean pestBean);
 }

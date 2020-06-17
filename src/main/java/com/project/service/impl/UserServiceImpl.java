@@ -1,5 +1,8 @@
 package com.project.service.impl;
 
+import com.github.pagehelper.PageHelper;
+import com.github.pagehelper.PageInfo;
+import com.project.bean.EquipmentBean;
 import com.project.bean.UserBean;
 import com.project.dao.IUserDao;
 import com.project.service.IUserService;
@@ -96,7 +99,20 @@ public class UserServiceImpl implements IUserService {
     }
 
     @Override
-    public List<UserBean> showUserInfoList(String usergrade) {
+    public List<UserBean> showUserInfoList(String currentPage, String pageSize, String usergrade) {
+        //使用 pagehelper 分页插件
+        PageInfo<UserBean> pageInfo = null;
+
+        //定义分页规则
+        PageHelper.startPage(Integer.valueOf(currentPage),Integer.valueOf(pageSize));
+
+        //得到所有管理员
+//        List<EquipmentBean> equipmentBeanList = iEquipmentDao.getEquipmentAll();
+
+        //进行分页
+//        pageInfo = new PageInfo<EquipmentBean>(equipmentBeanList);
+//
+//        return pageInfo;
         return null;
     }
 }

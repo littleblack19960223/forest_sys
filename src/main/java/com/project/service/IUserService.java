@@ -33,6 +33,9 @@ public interface IUserService {
 
     /**
      * 根据条件查询符合要求的数据，返回一个数组
+     * currentPage,当前多少页
+     * pageSize：每页多少条数据
      */
-    public List<UserBean> showUserInfoList(String usergrade);
+    public List<UserBean> showUserInfoList(String currentPage, String pageSize, String usergrade);
+
 }

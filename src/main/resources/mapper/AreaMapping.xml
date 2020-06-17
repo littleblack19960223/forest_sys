@@ -11,14 +11,14 @@
         <result column="area_goodTree" property="goodTree"></result>
         <result column="area_tree" property="tree"></result>
         <result column="area_type" property="type"></result>
-        <association property="classesBean" javaType="ClassesBean">
+        <collection property="classesBeans" ofType="ClassesBean" column="id">
             <id column="classes_id" property="classId"></id>
             <result column="classes_name" property="name"></result>
             <result column="classes_person" property="person"></result>
             <result column="classes_phone" property="phone"></result>
             <result column="classes_num" property="num"></result>
             <result column="classes_date" property="creat"></result>
-        </association>
+        </collection>
     </resultMap>
 
     <select id="getAreaByItem" resultMap="areaMap">

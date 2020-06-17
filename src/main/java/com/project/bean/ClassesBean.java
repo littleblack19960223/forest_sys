@@ -3,6 +3,7 @@ package com.project.bean;
 import lombok.Data;
 
 import java.sql.Date;
+import java.util.List;
 
 @Data
 public class ClassesBean {
@@ -19,5 +20,7 @@ public class ClassesBean {
     private AreaBean areaBean;
 
     private Date creat;
+
+    private List<AreaBean> list;
 
 }

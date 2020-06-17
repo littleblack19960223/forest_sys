@@ -1,5 +1,7 @@
 package com.project.bean;
+
 import lombok.Data;
+
 import java.util.Date;
 
 /**

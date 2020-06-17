@@ -3,6 +3,7 @@ package com.project.bean;
 import lombok.Data;
 
 import java.sql.Date;
+import java.util.List;
 
 @Data
 public class EventBean {
@@ -54,6 +55,11 @@ public class EventBean {
      * 事件是否申请专家会商
      * */
     private Integer type;
+
+    /**
+     * 会商纪录
+     * */
+    private List<DiscussBean> list;
 
 
 }

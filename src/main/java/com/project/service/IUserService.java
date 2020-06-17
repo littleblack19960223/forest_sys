@@ -20,6 +20,7 @@ public interface IUserService {
     /**
      * 根据修改后的对象
      * 修改数据库信息
+     * 返回1表示修改成功，0表示修改失败
      */
-    public void updateUserInfo(UserBean userBean);
+    public int updateUserInfo(UserBean userBean);
 }

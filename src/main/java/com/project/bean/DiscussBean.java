@@ -14,4 +14,10 @@ public class DiscussBean {
     private String personnel;
     /**会商结果*/
     private String resultTxt;
+
+    public DiscussBean( Date discussdate, String personnel, String resultTxt) {
+        this.discussdate = discussdate;
+        this.personnel = personnel;
+        this.resultTxt = resultTxt;
+    }
 }

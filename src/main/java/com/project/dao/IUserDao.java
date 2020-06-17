@@ -1,10 +1,7 @@
 package com.project.dao;
 
 import com.project.bean.UserBean;
-import org.apache.ibatis.annotations.Insert;
-import org.apache.ibatis.annotations.Param;
-import org.apache.ibatis.annotations.Select;
-import org.apache.ibatis.annotations.Update;
+import org.apache.ibatis.annotations.*;
 
 /**
  * @author 23
@@ -20,15 +17,20 @@ public interface IUserDao {
     /**
      * 根据用户名，查询用户信息
      */
-    @Select("SELECT user_name,user_password,user_grade,user_realname\n" +
+    @Select("SELECT user_name as username,user_password as userpwd,user_grade as usergrade,user_realname as userrealname\n" +
             "FROM t_user \n" +
-            "where user_name='#{name}'\n")
+            "where user_name=#{name}")
     public UserBean showUserInfo(@Param(value = "name") String name);
 
     /**
      * 根据传入用户对象修改用户信息
      */
-    @Update("UPDATE t_user SET user_password=#{userBean.userpwd}, user_grade=#{userBean.usergrade}\n" +
-            "WHERE  user_name = #{userBean.username}")
-    public int updateUserInfo(@Param(value = "userBean") UserBean userBean);
+    @Update("UPDATE t_user SET user_password=#{user.userpwd}, user_grade=#{user.usergrade}\n" +
+            "WHERE  user_name = #{user.username}")
+    public int updateUserInfo(@Param(value = "user") UserBean user);
+    /**
+     * 传入用户名字，删除对应用户
+     */
+    @Delete("DELETE FROM t_user WHERE user_name=#{username}")
+    public int removeuser(@Param(value = "username") String username);
 }

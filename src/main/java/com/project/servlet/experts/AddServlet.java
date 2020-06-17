@@ -82,6 +82,23 @@ public class AddServlet extends HttpServlet {
                 Date parse = dateFormat.parse(date);
                 String sex = paramMap.get("sex");
                 String specialties = paramMap.get("specialties");
+
+                //处理专长，前端写成下拉菜单
+                String specialties1 = null;
+                switch (specialties) {
+                    case "1":
+                        specialties1 = "虫害防治";
+                        break;
+                    case "2":
+                        specialties1 = "病害防治";
+                        break;
+                    case "3":
+                        specialties1 = "鼠害防治";
+                        break;
+
+
+                }
+
                 String telephone = paramMap.get("telephone");
                 String site = paramMap.get("site");
                 String duty = paramMap.get("duty");
@@ -90,7 +107,7 @@ public class AddServlet extends HttpServlet {
                 ExpertsBean expertsBean = null;
 
 
-                expertsBean = new ExpertsBean(expertsName, new java.sql.Date(parse.getTime()), sex, specialties, telephone, site, fileName, duty, work, mailbox);
+                expertsBean = new ExpertsBean(expertsName, new java.sql.Date(parse.getTime()), sex, specialties1, telephone, site, fileName, duty, work, mailbox);
 
 
                 int i = new ExpertsServiceImpl().addExperts(expertsBean);

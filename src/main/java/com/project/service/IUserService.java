@@ -23,4 +23,9 @@ public interface IUserService {
      * 返回1表示修改成功，0表示修改失败
      */
     public int updateUserInfo(UserBean userBean);
+
+    /**
+     * 传入用户名字，删除对应用户
+     */
+    public int removeuser(String username);
 }

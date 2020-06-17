@@ -1,5 +1,6 @@
 package com.project.service;
 
+import com.github.pagehelper.PageInfo;
 import com.project.bean.PestBean;
 import org.apache.ibatis.annotations.Param;
 
@@ -9,9 +10,9 @@ import java.util.Map;
 public interface IPestService {
     /**
      * 虫害一览信息
-     * @return 所有虫害信息的集合
+     * @return 分好页的虫害信息的集合
      */
-    public List<PestBean> showAllPest();
+    public PageInfo<PestBean> showAllPest();
 
     /**
      * 添加新虫害信息
@@ -29,7 +30,7 @@ public interface IPestService {
     /**
      * 根据条件查找虫害信息
      * @param conditon 查找条件
-     * @return  虫害对象集合
+     * @return  分好页的虫害对象集合
      */
     public List<PestBean>  showPestByCondition(Map<String,String> conditon);
 }

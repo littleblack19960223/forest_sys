@@ -1,5 +1,7 @@
 package com.project.service.impl;
 
+import com.github.pagehelper.PageHelper;
+import com.github.pagehelper.PageInfo;
 import com.project.bean.PestBean;
 import com.project.dao.IPestDao;
 import com.project.service.IPestService;
@@ -11,11 +13,17 @@ import java.util.Map;
 
 public class PestServiceImpl implements IPestService {
     @Override
-    public List<PestBean> showAllPest() {
+    public PageInfo<PestBean> showAllPest() {
         SqlSession sqlSession= MyBatisUtil.getSession();
         IPestDao iPestDao=sqlSession.getMapper(IPestDao.class);
 
-        return iPestDao.getAllPest();
+        PageInfo<PestBean> pageInfo=null;
+        PageHelper.startPage(1,5);
+        List<PestBean> list=iPestDao.getAllPest();
+        pageInfo=new PageInfo<PestBean>(list);
+
+        return pageInfo
+                ;
     }
 
     @Override

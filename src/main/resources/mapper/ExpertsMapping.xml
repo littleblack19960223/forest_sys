@@ -43,5 +43,12 @@
     <update id="updateExperts" parameterType="com.project.bean.ExpertsBean">
         update t_experts set experts_name=#{expertsName},date=#{date},sex=#{sex},specialties=#{specialties},telephone=#{telephone},site=#{site},head=#{head},duty=#{duty},work=#{work},mailbox=#{mailbox} where experts_id=#{id}
     </update>
+    <delete id="deleteExperts" parameterType="int">
+        delete from t_experts where  experts_id=#{id}
+    </delete>
+    <select id="shows" resultMap="ExpertsBeanMap">
+         SELECT experts_id,experts_name from t_experts where specialties=#{disaster}
+
+    </select>
 
 </mapper>

@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.project.dao.ExpertsDao">
+    <resultMap id="ExpertsBeanMap" type="com.project.bean.ExpertsBean">
+        <id column="experts_id" property="id"></id>
+        <result column="experts_name" property="expertsName"></result>
+        <result column="date" property="date"></result>
+        <result column="sex" property="sex"></result>
+        <result column="specialties" property="specialties"></result>
+        <result column="telephone" property="telephone"></result>
+        <result column="site" property="site"></result>
+        <result column="head" property="head"></result>
+        <result column="duty" property="duty"></result>
+        <result column="work" property="work"></result>
+        <result column="mailbox" property="mailbox"></result>
+    </resultMap>
+
+    <select id="show" resultMap="ExpertsBeanMap">
+       SELECT experts_id,experts_name,work,specialties,duty,telephone FROM t_experts where TRUE
+        <if test="name != null">
+            and  experts_name  like '${name}'
+        </if>
+        <if test="specialties != null">
+            and  specialties  like '${specialties}'
+        </if>
+        <if test="work != null">
+            and  work  like '${work}'
+        </if>
+    </select>
+    <select id="lookExperts" resultMap="ExpertsBeanMap">
+        SELECT experts_id,experts_name,date,sex,specialties,telephone,site,head,duty,work,mailbox from t_experts WHERE experts_id=#{id}
+
+    </select>
+    <insert id="addExperts" parameterType="com.project.bean.ExpertsBean">
+        insert into t_experts VALUES(NULL,#{expertsName},#{date},#{sex},#{specialties},#{telephone},#{site},#{head},#{duty},#{work},#{mailbox})
+    </insert>
+    <select id="queryName" resultType="int">
+        select  COUNT(*) from t_experts where experts_name=#{name}
+    </select>
+
+    <update id="updateExperts" parameterType="com.project.bean.ExpertsBean">
+        update t_experts set experts_name=#{expertsName},date=#{date},sex=#{sex},specialties=#{specialties},telephone=#{telephone},site=#{site},head=#{head},duty=#{duty},work=#{work},mailbox=#{mailbox} where experts_id=#{id}
+    </update>
+
+</mapper>

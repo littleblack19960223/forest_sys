@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.project.dao.IPestDao">
+
+    <resultMap id="pestMap" type="PestBean">
+        <id column="id" property="id"></id>
+        <result column="name" property="name"></result>
+        <result column="host" property="host"></result>
+        <result column="harm" property="harm"></result>
+        <result column="enemy" property="enemy"></result>
+        <result column="measure" property="measure"></result>
+        <result column="larvaImg" property="larvaImg"></result>
+        <result column="adultImg" property="adultImg"></result>
+    </resultMap>
+
+</mapper>
+

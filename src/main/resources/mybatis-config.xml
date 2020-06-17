@@ -12,7 +12,7 @@
         <!--开启缓存：默认就是 true-->
         <setting name="cacheEnabled" value="true"/>
 
-        <setting name="logImpl" value="LOG4J"></setting>
+        <setting name="logImpl" value="STDOUT_LOGGING"></setting>
     </settings>
 
     <typeAliases>

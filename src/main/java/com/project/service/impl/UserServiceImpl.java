@@ -99,7 +99,7 @@ public class UserServiceImpl implements IUserService {
     }
 
     @Override
-    public List<UserBean> showUserInfoList(String currentPage, String pageSize, String usergrade) {
+    public PageInfo<UserBean> showUserInfoList(String currentPage, String pageSize, String usergrade) {
         //使用 pagehelper 分页插件
         PageInfo<UserBean> pageInfo = null;
 
@@ -107,12 +107,10 @@ public class UserServiceImpl implements IUserService {
         PageHelper.startPage(Integer.valueOf(currentPage),Integer.valueOf(pageSize));
 
         //得到所有管理员
-//        List<EquipmentBean> equipmentBeanList = .getEquipmentAll();
-
+        List<UserBean> beanList = sqlSession.getMapper(IUserDao.class).showUserInfoList(usergrade);
         //进行分页
-//        pageInfo = new PageInfo<EquipmentBean>(equipmentBeanList);
-//
-//        return pageInfo;
-        return null;
+        pageInfo = new PageInfo<UserBean>(beanList);
+
+        return pageInfo;
     }
 }

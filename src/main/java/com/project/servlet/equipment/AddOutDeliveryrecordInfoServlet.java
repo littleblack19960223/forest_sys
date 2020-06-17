@@ -19,7 +19,7 @@ import java.util.Map;
 public class AddOutDeliveryrecordInfoServlet extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
-        System.out.println();
+
 
     }
 

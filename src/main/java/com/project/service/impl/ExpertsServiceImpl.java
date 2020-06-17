@@ -2,8 +2,11 @@ package com.project.service.impl;
 
 import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
+import com.project.bean.DiscussBean;
+import com.project.bean.EventBean;
 import com.project.bean.ExpertsBean;
 import com.project.dao.ExpertsDao;
+import com.project.dao.IEventDao;
 import com.project.service.ExpertsService;
 import com.project.util.MyBatisUtil;
 import org.apache.ibatis.annotations.Mapper;
@@ -66,5 +69,37 @@ public class ExpertsServiceImpl implements ExpertsService {
     @Override
     public List<ExpertsBean> shows(String disaster) {
         return expertsDao.shows(disaster);
+    }
+
+    @Override
+    public PageInfo<EventBean> Incident(String curentPage,String pageSize) {
+
+        int curentPage1 = Integer.parseInt(curentPage);
+        int pageSize1 = Integer.parseInt(pageSize);
+
+        //使用mybatis的分页插件
+        PageHelper.startPage(curentPage1, pageSize1);
+        PageInfo<EventBean> pageInfo = null;
+            //调用事件接口的方法
+        IEventDao mapper = MyBatisUtil.getSession().getMapper(IEventDao.class);
+        List<EventBean> eventByType = mapper.getEventByType();
+        pageInfo = new PageInfo<EventBean>(eventByType);
+        return pageInfo;
+    }
+
+    @Override
+    public EventBean talks(int id) {
+        //调用事件接口的方法
+        IEventDao mapper = MyBatisUtil.getSession().getMapper(IEventDao.class);
+        EventBean eventById = mapper.getEventById(id);
+        return eventById;
+    }
+
+    @Override
+    public int addTalks(DiscussBean discussBean,int[] expertsId) {
+        //添加与结果相关联的专家
+        //添加会商结果信息
+        expertsDao.addTalks(discussBean);
+        return 0;
     }
 }

@@ -1,6 +1,8 @@
 package com.project.service;
 
 import com.github.pagehelper.PageInfo;
+import com.project.bean.DiscussBean;
+import com.project.bean.EventBean;
 import com.project.bean.ExpertsBean;
 
 
@@ -44,7 +46,19 @@ public interface ExpertsService {
 
     /**
      * 根据灾害类型选择专家
+     *
      * @return 专家集合
      */
     List<ExpertsBean> shows(String disaster);
+
+   /**
+    * 查询专家需要解决的事情并分页展示
+    * @param curentPage
+    * @param pageSize
+    */
+   PageInfo<EventBean> Incident(String curentPage,String pageSize);
+/**根据事件id，查询事件详细信息，包含会商结果*/
+    EventBean talks(int id);
+/**添加会商的结果*/
+    int addTalks(DiscussBean discussBean,int[] expertsId);
 }

@@ -50,5 +50,8 @@
          SELECT experts_id,experts_name from t_experts where specialties=#{disaster}
 
     </select>
+    <insert id="addTalks" useGeneratedKeys="true" keyProperty="discussId">
+       INSERT into t_discuss VALUES(null,2,,'张三，李四','喂只狗')
+    </insert>
 
 </mapper>

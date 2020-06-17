@@ -12,7 +12,7 @@
         <!--开启缓存：默认就是 true-->
         <setting name="cacheEnabled" value="true"/>
 
-        <setting name="logImpl" value="LOG4J"></setting>
+        <setting name="logImpl" value="STDOUT_LOGGING"></setting>
     </settings>
 
     <typeAliases>
@@ -52,6 +52,7 @@
     <mappers>
         <mapper resource="mapper/AreaMapping.xml"></mapper>
         <mapper resource="mapper/ClassesMapping.xml"></mapper>
+        <mapper resource="mapper/EventMapping.xml"></mapper>
         <mapper resource="mapper/pestMapping.xml"></mapper>
         <mapper resource="mapper/diseaseMapping.xml"></mapper>
         <mapper resource="mapper/ratsMapping.xml"></mapper>

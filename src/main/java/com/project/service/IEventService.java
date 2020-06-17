@@ -3,9 +3,13 @@ package com.project.service;
 import com.project.bean.EventBean;
 
 import java.util.List;
+import java.util.Map;
 
 public interface IEventService {
 
+    /**
+     * 添加事件
+     * */
     public int addEvent(EventBean eventBean);
 
     /**
@@ -13,10 +17,24 @@ public interface IEventService {
      * */
     public EventBean getEventById(int id);
 
+    /**
+     * 修改事件信息（灾情阶段，防治措施）
+     * */
     public int updateEvent(int id,int state,String prevention);
 
-    public List<EventBean> getEventByItem(String name,String state,String area,String startDate,String endDate);
+    /**
+     * 修改事件信息（修改为专家会商）
+     * */
+    public int updateEventType(int id,int type);
 
+    /**
+     * 模糊查询
+     * */
+    public List<EventBean> getEventByItem(Map<String,String> map);
+
+    /**
+     * 查所有事件
+     * */
     public List<EventBean> getAllEvent();
 
     /**

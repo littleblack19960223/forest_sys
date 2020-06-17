@@ -1,7 +1,9 @@
 package com.project.servlet.experts;
 
+import com.github.pagehelper.PageInfo;
 import com.google.gson.Gson;
-import com.project.bean.ExpertsBean;
+import com.google.gson.GsonBuilder;
+import com.project.bean.EventBean;
 import com.project.service.impl.ExpertsServiceImpl;
 
 import javax.servlet.ServletException;
@@ -12,19 +14,22 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.util.List;
 
-@WebServlet(name = "DisasterExpertsServlet",value = "/disasterExperts")
-public class DisasterExpertsServlet extends HttpServlet {
+@WebServlet(name = "ExpertsIncidentServlet",value = "/inciden")
+/**展示专家需要解决的事件*/
+public class ExpertsIncidentServlet extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        doGet(request,response);
+        doGet(request, response);
     }
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        String disaster = request.getParameter("disaster");
-        //获得前端的数据灾害类型看是字符串还是数字字符串数字还要再转化
+        //分页的数据
+        String curentPage = request.getParameter("curentPage");
+        String pageSize = request.getParameter("pageSize");
         ExpertsServiceImpl expertsService = new ExpertsServiceImpl();
-        List<ExpertsBean> list =expertsService.shows(disaster);
-        Gson gson =new Gson();
+        PageInfo<EventBean> list=expertsService.Incident(curentPage, pageSize);
+        GsonBuilder gsonBuilder = new GsonBuilder().setDateFormat("yyyy-MM-dd");
+        Gson gson =gsonBuilder.create();
         String json = gson.toJson(list);
         response.getWriter().print(json);
 

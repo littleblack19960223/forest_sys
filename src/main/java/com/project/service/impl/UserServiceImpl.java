@@ -49,7 +49,8 @@ public class UserServiceImpl implements IUserService {
      * 修改数据库信息
      */
     @Override
-    public void updateUserInfo(UserBean userBean) {
-
+    public int updateUserInfo(UserBean userBean) {
+        int update = sqlSession.getMapper(IUserDao.class).updateUserInfo(userBean);
+        return update;
     }
 }

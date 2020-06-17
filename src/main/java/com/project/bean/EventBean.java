@@ -11,10 +11,13 @@ public class EventBean {
      * 事件id
      * */
     private Integer eventId;
+
+    private String name;
+
     /**
      * 事件时间
      * */
-    private Date date;
+    private Date date = new Date(System.currentTimeMillis());
     /**
      * 事件防止措施
      * */

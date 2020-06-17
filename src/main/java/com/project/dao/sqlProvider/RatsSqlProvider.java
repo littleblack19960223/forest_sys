@@ -15,10 +15,10 @@ public class RatsSqlProvider {
                 "rats_img as img" +
                 " from t_rats  where 1=1 ";
 
-        String value1=map.get("RatsName");
+        String value1=map.get("ratsName");
 
 
-        if (value1 !=null && !"".equals(value1)){
+        if (value1 !=null && ! "".equals(value1)){
             sql+=" and rats_name like '%"+value1+"%'";
         }
 

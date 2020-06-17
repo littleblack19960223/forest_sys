@@ -14,7 +14,7 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.util.List;
 
-@WebServlet(name = "ExpertsIncidentServlet")
+@WebServlet(name = "ExpertsIncidentServlet",value = "/inciden")
 /**展示专家需要解决的事件*/
 public class ExpertsIncidentServlet extends HttpServlet {
     @Override

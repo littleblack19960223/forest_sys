@@ -107,7 +107,7 @@ public class UserServiceImpl implements IUserService {
         PageHelper.startPage(Integer.valueOf(currentPage),Integer.valueOf(pageSize));
 
         //得到所有管理员
-//        List<EquipmentBean> equipmentBeanList = iEquipmentDao.getEquipmentAll();
+//        List<EquipmentBean> equipmentBeanList = .getEquipmentAll();
 
         //进行分页
 //        pageInfo = new PageInfo<EquipmentBean>(equipmentBeanList);

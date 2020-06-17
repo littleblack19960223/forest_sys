@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.project.dao.IClassesDao">
+
+    <resultMap id="classMap" type="ClassesBean">
+        <id column="classes_id" property="classId"></id>
+        <result column="classes_name" property="name"></result>
+        <result column="classes_person" property="person"></result>
+        <result column="classes_phone" property="phone"></result>
+        <result column="classes_num" property="num"></result>
+        <result column="classes_date" property="creat"></result>
+        <association property="areaBean" javaType="AreaBean">
+            <id column="area_id" property="areaId"></id>
+            <result column="area_name" property="name"></result>
+            <result column="area_goodTree" property="goodTree"></result>
+            <result column="area_tree" property="tree"></result>
+            <result column="area_type" property="type"></result>
+        </association>
+    </resultMap>
+
+
+    <select id="getAll" resultMap="classMap">
+        select * from t_classes join t_area where t_classes.area_id= t_area.area_id;
+    </select>
+
+    <select id="getClassesByItem">
+
+    </select>
+
+    <select id="getClassesById"></select>
+
+    <insert id="addClasses">
+
+
+    </insert>
+
+    <update id="updateClasses">
+
+
+    </update>
+</mapper>
+

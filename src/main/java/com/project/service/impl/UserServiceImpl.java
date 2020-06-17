@@ -40,8 +40,8 @@ public class UserServiceImpl implements IUserService {
     @Override
     public UserBean showUserInfo(String name) {
 
-        UserBean userBean = sqlSession.getMapper(IUserDao.class).showUserInfo(name);
-        return userBean;
+//        UserBean userBean = sqlSession.getMapper(IUserDao.class).showUserInfo(name);
+        return null;
     }
 
     /**

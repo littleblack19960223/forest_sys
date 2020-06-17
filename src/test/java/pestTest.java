@@ -29,7 +29,7 @@ public class pestTest {
 
         IPestService iPestService=new PestServiceImpl();
         Map<String,String> map=new HashMap<String,String>();
-        map.put("pestName","a");
+        map.put("pestName","");
         map.put("pestHost","杨");
         System.out.println(iPestService.showPestByCondition(map));
 

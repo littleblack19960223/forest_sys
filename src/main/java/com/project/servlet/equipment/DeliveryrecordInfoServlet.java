@@ -2,9 +2,10 @@ package com.project.servlet.equipment;
 
 import com.github.pagehelper.PageInfo;
 import com.google.gson.Gson;
-import com.project.bean.EquipmentBean;
-import com.project.service.IEquipmentService;
-import com.project.service.impl.EquipmentServiceImpl;
+import com.project.bean.DeliveryrecordBean;
+import com.project.dao.IDeliveryrecordDao;
+import com.project.service.IDeliveryrecordService;
+import com.project.service.impl.DeliveryrecordServiceImpl;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -14,18 +15,19 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
 /**
- * 显示分页、药剂器械信息
+ *初始化、设备出库信息
  */
-@WebServlet(name = "showEquipmentServlet" ,value = "/showEquipmentInfo")
-public class showEquipmentServlet extends HttpServlet {
+@WebServlet(name = "DeliveryrecordInfoServlet",value = "/DeliveryRecordInfo")
+public class DeliveryrecordInfoServlet extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
         String currentPage = request.getParameter("currentPage");
         String pageSize = request.getParameter("pageSize");
 
-        IEquipmentService iEquipmentService = new EquipmentServiceImpl();
+        IDeliveryrecordService iDeliveryrecordService = new DeliveryrecordServiceImpl();
 
-        PageInfo<EquipmentBean> pageInfo = iEquipmentService.showEquipmentAll(currentPage,pageSize);
+        PageInfo<DeliveryrecordBean> pageInfo = iDeliveryrecordService.showDeliveryrecordInfo(currentPage, pageSize);
+
 
         Gson gson = new Gson();
         String json = gson.toJson(pageInfo);

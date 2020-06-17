@@ -55,7 +55,10 @@
 
     <select id="getEventById" resultType="com.project.bean.EventBean"></select>
     <select id="getEventByItem" resultType="com.project.bean.EventBean"></select>
-    <select id="getEventByType" resultType="com.project.bean.EventBean"></select>
+    <select id="getEventByType" resultType="com.project.bean.EventBean">
+        SELECT event_id,event_name,event_date,event_prevention,event_state,area_name from t_event
+            LEFT JOIN t_area ON t_event.area_id=t_area.area_id WHERE event_state=3
+    </select>
 
 
 </mapper>

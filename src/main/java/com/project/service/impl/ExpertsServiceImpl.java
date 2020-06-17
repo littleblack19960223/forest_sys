@@ -52,6 +52,19 @@ public class ExpertsServiceImpl implements ExpertsService {
 
     @Override
     public int updateExperts(ExpertsBean expertsBean) {
-        return expertsDao.updateExperts(expertsBean);
+        int i = expertsDao.updateExperts(expertsBean);
+        sqlSession.commit();
+        return i;
+    }
+
+    @Override
+    public void daleteExperts(Integer id) {
+        expertsDao.deleteExperts(id);
+        sqlSession.commit();
+    }
+
+    @Override
+    public List<ExpertsBean> shows(String disaster) {
+        return expertsDao.shows(disaster);
     }
 }

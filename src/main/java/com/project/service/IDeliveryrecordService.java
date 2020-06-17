@@ -38,10 +38,9 @@ public interface IDeliveryrecordService {
     public int addDeliveryrecordInfo(DeliveryrecordEquipmentBean deliveryrecordEquipmentBean);
 
 
-    //得到领用小班    --
-    //出库，添加出库信息 --
-    //物品信息， get
-    //条件查询物品信息，get
+
+
+
 
 
 }

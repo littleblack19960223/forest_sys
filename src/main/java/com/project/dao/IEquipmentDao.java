@@ -1,12 +1,14 @@
 package com.project.dao;
 
 import com.project.bean.EquipmentBean;
+import com.project.dao.sqlProvider.EquipmentProvider;
 import com.project.dao.sqlProvider.EquipmentSqlProvider;
 import org.apache.ibatis.annotations.Insert;
 import org.apache.ibatis.annotations.Param;
 import org.apache.ibatis.annotations.Select;
 import org.apache.ibatis.annotations.SelectProvider;
 
+import java.lang.reflect.Array;
 import java.util.List;
 import java.util.Map;
 
@@ -52,6 +54,15 @@ public interface IEquipmentDao {
      */
     @SelectProvider(type = EquipmentSqlProvider.class,method = "showEquipmentByConditions")
     public List<EquipmentBean> getEquipmentByconditions(Map<String, String> map);
+
+
+    /**
+     * 根据id得到物品信息
+     * @param map 物品id，可能有多个
+     * @return 对应id的物品信息集合
+     */
+    @SelectProvider(type = EquipmentProvider.class,method = "getEquipmentById")
+    public List<EquipmentBean> getEquipmentById(Map<Integer,String> map);
 
 
 

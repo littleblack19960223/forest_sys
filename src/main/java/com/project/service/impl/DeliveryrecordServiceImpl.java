@@ -40,6 +40,10 @@ public class DeliveryrecordServiceImpl implements IDeliveryrecordService {
 
     @Override
     public int addDeliveryrecordInfo(DeliveryrecordEquipmentBean deliveryrecordEquipmentBean) {
+
+
+
+
         return 0;
     }
 

@@ -25,9 +25,12 @@ public class UpdateUserServlet extends HttpServlet {
         String newuserpwd = request.getParameter("newuserpwd");
         String usergrade = request.getParameter("usergrade");
 
+        IUserService iStudentService = new UserServiceImpl();
+        UserBean userBean = iStudentService.showUserInfo(username);
+
         if (newuserpwd.equals(userpwd)) {
-            IUserService iStudentService = new UserServiceImpl();
-            UserBean userBean = iStudentService.showUserInfo(username);
+
+            userBean.setUsername(username);
             userBean.setUserpwd(userpwd);
             userBean.setUsergrade(usergrade);
 
@@ -35,11 +38,11 @@ public class UpdateUserServlet extends HttpServlet {
         }
 
 
-//        Gson gson = new Gson();
-//
-//        String json = gson.toJson();
-//
-//        response.getWriter().print(json);
+        Gson gson = new Gson();
+
+        String json = gson.toJson(userBean);
+
+        response.getWriter().print(json);
 
     }
 

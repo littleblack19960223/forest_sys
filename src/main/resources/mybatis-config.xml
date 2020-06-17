@@ -55,6 +55,7 @@
         <mapper resource="mapper/pestMapping.xml"></mapper>
         <mapper resource="mapper/diseaseMapping.xml"></mapper>
         <mapper class="com.project.dao.IEquipmentDao"></mapper>
+        <mapper class="com.project.dao.IUserDao"></mapper>
         <mapper class="com.project.dao.IDeliveryrecordDao"></mapper>
         <mapper resource="mapper/ExpertsMapping.xml"></mapper>
 

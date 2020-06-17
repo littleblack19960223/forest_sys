@@ -1,6 +1,7 @@
 package com.project.servlet;
 
 import javax.servlet.ServletException;
+import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -9,6 +10,7 @@ import java.io.IOException;
 /**
  * @author 23
  */
+@WebServlet(name = "AddLogServelet",value = "/addlog")
 public class AddLogServelet extends HttpServlet {
 
     @Override

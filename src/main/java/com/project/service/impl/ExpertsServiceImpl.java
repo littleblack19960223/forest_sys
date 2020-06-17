@@ -96,9 +96,10 @@ public class ExpertsServiceImpl implements ExpertsService {
     }
 
     @Override
-    public int addTalks(DiscussBean discussBean) {
-        String expertss=null;
-        //将会商结果里的专家集合转化成字符串
+    public int addTalks(DiscussBean discussBean,int[] expertsId) {
+        //添加与结果相关联的专家
+        //添加会商结果信息
+        expertsDao.addTalks(discussBean);
         return 0;
     }
 }

@@ -1,5 +1,6 @@
 package com.project.servlet.experts;
 
+import com.google.gson.Gson;
 import com.project.bean.ExpertsBean;
 import com.project.service.impl.ExpertsServiceImpl;
 
@@ -23,6 +24,9 @@ public class DisasterExpertsServlet extends HttpServlet {
         //获得前端的数据灾害类型看是字符串还是数字字符串数字还要再转化
         ExpertsServiceImpl expertsService = new ExpertsServiceImpl();
         List<ExpertsBean> list =expertsService.shows(disaster);
+        Gson gson =new Gson();
+        String json = gson.toJson(list);
+        response.getWriter().print(json);
 
     }
 }

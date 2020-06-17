@@ -60,5 +60,5 @@ public interface ExpertsService {
 /**根据事件id，查询事件详细信息，包含会商结果*/
     EventBean talks(int id);
 /**添加会商的结果*/
-    int addTalks(DiscussBean discussBean);
+    int addTalks(DiscussBean discussBean,int[] expertsId);
 }

@@ -26,16 +26,19 @@ public class addTalksServlet extends HttpServlet {
         //获得专家的字符串数组,进行分隔
         String experts = request.getParameter("experts");
         String[] split = experts.split(",");
-
+        //将字符串转化成一个专家id,数组，和专家名字的字符串，
+        int [] expertsId=null;
 
         //获得会商结果
         String talksTxt = request.getParameter("talksTxt");
+        //获得事件的id
+       int expId=Integer.parseInt( request.getParameter("expertsId"));
         //获得当前时间
         LocalDate now = LocalDate.now();
         Date date = Date.valueOf(now);
-        DiscussBean discussBean = new DiscussBean(date, new String(), talksTxt);
+        DiscussBean discussBean = new DiscussBean(expId,date, new String(), talksTxt);
         ExpertsServiceImpl expertsService = new ExpertsServiceImpl();
-       int i = expertsService.addTalks(discussBean);
+       int i = expertsService.addTalks(discussBean,expertsId);
 
     }
 }

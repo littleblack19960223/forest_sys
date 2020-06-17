@@ -1,6 +1,8 @@
 package com.project.dao;
 
+import com.project.bean.DiscussBean;
 import com.project.bean.ExpertsBean;
+import org.apache.ibatis.annotations.Param;
 
 import java.util.List;
 import java.util.Map;
@@ -37,4 +39,6 @@ public interface ExpertsDao {
     void deleteExperts(Integer id);
     /**根据灾害类型查询专家的信息*/
     List<ExpertsBean> shows(String disaster);
+/**添加专家会商的结果，并返回该条数据的id*/
+    void addTalks(DiscussBean discussBean);
 }

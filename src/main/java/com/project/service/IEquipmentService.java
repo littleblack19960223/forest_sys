@@ -3,6 +3,7 @@ package com.project.service;
 import com.github.pagehelper.PageInfo;
 import com.project.bean.EquipmentBean;
 
+import java.lang.reflect.Array;
 import java.util.List;
 import java.util.Map;
 
@@ -36,4 +37,10 @@ public interface IEquipmentService {
      */
     public int addEquipment(EquipmentBean equipmentBean);
 
+    /**
+     * 根据id得到物品信息
+     * @param map 物品id，可能有多个
+     * @return 对应id的物品信息集合
+     */
+    public List<EquipmentBean> getEquipmentById(Map<Integer,String> map);
 }

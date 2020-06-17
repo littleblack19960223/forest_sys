@@ -65,4 +65,10 @@ public class EquipmentServiceImpl implements IEquipmentService {
         return n;
 
     }
+
+    @Override
+    public List<EquipmentBean> getEquipmentById(Map<Integer,String> map) {
+
+        return iEquipmentDao.getEquipmentById(map);
+    }
 }

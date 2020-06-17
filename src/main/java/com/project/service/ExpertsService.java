@@ -4,6 +4,7 @@ import com.github.pagehelper.PageInfo;
 import com.project.bean.ExpertsBean;
 
 
+import java.util.List;
 import java.util.Map;
 
 public interface ExpertsService {
@@ -23,11 +24,27 @@ public interface ExpertsService {
      * @return 受影响的行数
      */
     int addExperts(ExpertsBean expertsBean);
+
     /**
      * 根据名字查询是否存在
-     * @return  1存在，0不存在
+     *
+     * @return 1存在，0不存在
      */
     int queryName(String name);
-/**修改专家*/
+
+    /**
+     * 修改专家
+     */
     int updateExperts(ExpertsBean expertsBean);
+
+    /**
+     * 根据id，删除专家
+     */
+    void daleteExperts(Integer id);
+
+    /**
+     * 根据灾害类型选择专家
+     * @return 专家集合
+     */
+    List<ExpertsBean> shows(String disaster);
 }

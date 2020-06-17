@@ -5,7 +5,9 @@ import com.project.service.IAreaService;
 
 import org.junit.Test;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 public class AreaServiceImplTest {
     private IAreaService service = new AreaServiceImpl();
@@ -24,6 +26,16 @@ public class AreaServiceImplTest {
         System.out.println(i);
     }
 
+    @Test
+    public void getByItem(){
+        Map<String,String> map = new HashMap<>();
+        map.put("areaName","区");
+        map.put("areaTree","林");
+        map.put("areaClass","班");
 
+        List<AreaBean> list = service.getAreaByItem(map);
+
+        System.out.println(list);
+    }
 
 }

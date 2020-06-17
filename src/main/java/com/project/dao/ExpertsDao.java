@@ -25,6 +25,16 @@ public interface ExpertsDao {
      * 根据名字查询是否存在
      */
     int queryName(String name);
-/**修改专家*/
+
+    /**
+     * 修改专家
+     */
     int updateExperts(ExpertsBean expertsBean);
+
+    /**
+     * 根据id删除专家
+     */
+    void deleteExperts(Integer id);
+    /**根据灾害类型查询专家的信息*/
+    List<ExpertsBean> shows(String disaster);
 }

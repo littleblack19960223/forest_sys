@@ -11,10 +11,11 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
+
 /**
  * @author 23
  */
-@WebServlet(name = "UpdateUserServlet",value = "/updateuser")
+@WebServlet(name = "UpdateUserServlet", value = "/updateuser")
 public class UpdateUserServlet extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
@@ -22,24 +23,26 @@ public class UpdateUserServlet extends HttpServlet {
         String username = request.getParameter("username");
         String userpwd = request.getParameter("userpwd");
         String newuserpwd = request.getParameter("newuserpwd");
-        String userrealname = request.getParameter("userrealname");
         String usergrade = request.getParameter("usergrade");
 
+        IUserService iStudentService = new UserServiceImpl();
+        UserBean userBean = iStudentService.showUserInfo(username);
 
-//        IUserService iStudentService  =new UserServiceImpl();
-//        UserBean userBean = iStudentService.showUserInfo(Integer.parseInt(username));
-//        userBean.setUserpwd(userpwd);
-//        userBean.setUsergrade(usergrade);
-//
-//        int num = iStudentService.updateUserInfo(studentBean);
+        if (newuserpwd.equals(userpwd)) {
+
+            userBean.setUsername(username);
+            userBean.setUserpwd(userpwd);
+            userBean.setUsergrade(usergrade);
+
+            iStudentService.updateUserInfo(userBean);
+        }
 
 
+        Gson gson = new Gson();
 
-//        Gson gson = new Gson();
-//
-//        String json = gson.toJson();
-//
-//        response.getWriter().print(json);
+        String json = gson.toJson(userBean);
+
+        response.getWriter().print(json);
 
     }
 

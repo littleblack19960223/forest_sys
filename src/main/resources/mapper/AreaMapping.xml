@@ -11,18 +11,27 @@
         <result column="area_goodTree" property="goodTree"></result>
         <result column="area_tree" property="tree"></result>
         <result column="area_type" property="type"></result>
-        <association property="classesBean" javaType="ClassesBean">
+        <collection property="classesBeans" ofType="ClassesBean" column="id">
             <id column="classes_id" property="classId"></id>
             <result column="classes_name" property="name"></result>
             <result column="classes_person" property="person"></result>
             <result column="classes_phone" property="phone"></result>
             <result column="classes_num" property="num"></result>
             <result column="classes_date" property="creat"></result>
-        </association>
+        </collection>
     </resultMap>
 
-    <select id="getAreaByItem" resultMap="areaMap">
-
+    <select id="getAreaByItem" resultMap="areaMap" parameterType="map">
+        select * from t_area join t_classes where t_area.area_id = t_classes.area_id
+        <if test="areaName != null">
+            and t_area.area_name like "%"#{areaName}"%"
+        </if>
+        <if test="areaTree != null">
+            and t_area.area_tree like "%"#{areaTree}"%"
+        </if>
+        <if test="areaClass != null">
+            and t_classes.classes_name like "%"#{areaClass}"%"
+        </if>
     </select>
 
     <insert id="addArea" parameterType="AreaBean">

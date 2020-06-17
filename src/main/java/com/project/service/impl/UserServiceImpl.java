@@ -32,4 +32,25 @@ public class UserServiceImpl implements IUserService {
 
         return num;
     }
+
+    /**
+     * 根据名字查询用户信息
+     * 返回用户对象
+     */
+    @Override
+    public UserBean showUserInfo(String name) {
+
+//        UserBean userBean = sqlSession.getMapper(IUserDao.class).showUserInfo(name);
+        return null;
+    }
+
+    /**
+     * 根据修改后的对象
+     * 修改数据库信息
+     */
+    @Override
+    public int updateUserInfo(UserBean userBean) {
+        int update = sqlSession.getMapper(IUserDao.class).updateUserInfo(userBean);
+        return update;
+    }
 }

@@ -41,8 +41,8 @@
             <result column="result" property="resultTxt"></result>
         </collection>
     </resultMap>
-    <insert id="addEvent">
-
+    <insert id="addEvent" parameterType="EventBean">
+        insert into t_event values {null,#{areaBean.areaId},#{name},#{date},#{prevention},#{state},#{describe},#{loss},#{area},#{pathway},#{disasterType},#{picture},#{type}
     </insert>
     <update id="updateEvent">
         update t_event set event_state = #{param2},event_prevention=#{param3} where event_id = #{param1}
@@ -65,8 +65,19 @@
         and t_discuss_experts.discuss_id = t_discuss.discuss_id
         and t_event.event_id = #{id}
     </select>
-    <select id="getEventByItem" resultMap="eventMap">
-
+    <select id="getEventByItem" resultMap="eventMap" parameterType="map">
+      SELECT * FROM  t_event join t_area join t_classes
+        WHERE t_event.area_id = t_area.area_id
+        and t_area.area_id = t_classes.area_id
+        <if test="eventName != null">
+            and t_event.event_name like "%"#{eventName}"%"
+        </if>
+        <if test="state != null">
+            and t_event.event_state = #{state}
+        </if>
+        <if test="areaName != null">
+            and t_area.area_name like "%"#{areaName}"%"
+        </if>
     </select>
     <select id="getEventByType" resultMap="eventMap">
         SELECT event_id,event_name,event_date,event_prevention,event_state,area_name from t_event

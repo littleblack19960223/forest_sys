@@ -19,8 +19,5 @@ public class ClassesBean {
 
     private AreaBean areaBean;
 
-    private Date creat;
-
-    private List<AreaBean> list;
-
+    private Date creat = new Date(System.currentTimeMillis());
 }

@@ -21,8 +21,17 @@
         </collection>
     </resultMap>
 
-    <select id="getAreaByItem" resultMap="areaMap">
-
+    <select id="getAreaByItem" resultMap="areaMap" parameterType="map">
+        select * from t_area join t_classes where t_area.area_id = t_classes.area_id
+        <if test="areaName != null">
+            and t_area.area_name like "%"#{areaName}"%"
+        </if>
+        <if test="areaTree != null">
+            and t_area.area_tree like "%"#{areaTree}"%"
+        </if>
+        <if test="areaClass != null">
+            and t_classes.classes_name like "%"#{areaClass}"%"
+        </if>
     </select>
 
     <insert id="addArea" parameterType="AreaBean">

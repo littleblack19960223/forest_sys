@@ -1,5 +1,6 @@
 package com.project.service;
 
+import com.github.pagehelper.PageInfo;
 import com.project.bean.UserBean;
 
 import java.util.List;
@@ -36,6 +37,6 @@ public interface IUserService {
      * currentPage,当前多少页
      * pageSize：每页多少条数据
      */
-    public List<UserBean> showUserInfoList(String currentPage, String pageSize, String usergrade);
+    public PageInfo<UserBean> showUserInfoList(String currentPage, String pageSize, String usergrade);
 
 }

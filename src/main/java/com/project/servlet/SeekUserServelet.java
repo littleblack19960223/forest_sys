@@ -1,10 +1,13 @@
 package com.project.servlet;
 
+import com.github.pagehelper.PageInfo;
+import com.google.gson.Gson;
 import com.project.bean.UserBean;
 import com.project.service.IUserService;
 import com.project.service.impl.UserServiceImpl;
 
 import javax.servlet.ServletException;
+import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -16,6 +19,7 @@ import java.util.Map;
 /**
  * @author 23
  */
+@WebServlet(name = "SeekUserServelet",value = "/seekuser")
 public class SeekUserServelet extends HttpServlet {
 
     @Override
@@ -29,7 +33,14 @@ public class SeekUserServelet extends HttpServlet {
             usergrade = "管理员";
         }
         IUserService iStudentService = new UserServiceImpl();
-        ArrayList<UserBean> userBean = (ArrayList<UserBean>) iStudentService.showUserInfoList(currentPage,pageSize,usergrade);
+        PageInfo<UserBean> userBean = iStudentService.showUserInfoList(currentPage,pageSize,usergrade);
+
+        Gson gson = new Gson();
+
+        String json = gson.toJson(userBean);
+
+        response.getWriter().print(json);
+
     }
 
     @Override

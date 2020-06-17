@@ -1,5 +1,6 @@
 package com.project.dao;
 
+import com.project.bean.Logbean;
 import com.project.bean.UserBean;
 import org.apache.ibatis.annotations.*;
 
@@ -38,6 +39,9 @@ public interface IUserDao {
     public int removeuser(@Param(value = "username") String username);
 
     @Select("SELECT user_name,user_password,user_grade,user_realname\n" +
-            "FROM t_user where user_grade like % #{usergrade} ")
+            "FROM t_user where user_grade like \"%\"#{usergrade} ")
     public List<UserBean> showUserInfoList(@Param(value = "usergrade") String usergrade);
+    @Insert("INSERT INTO t_log(log_info,log_data) " +
+            "VALUES (#{logbean.loginfo},#{logbean.logdata})")
+    public int addlog(@Param(value = "logbean") Logbean logbean);
 }

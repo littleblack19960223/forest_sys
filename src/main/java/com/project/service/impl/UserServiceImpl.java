@@ -3,6 +3,7 @@ package com.project.service.impl;
 import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
 import com.project.bean.EquipmentBean;
+import com.project.bean.Logbean;
 import com.project.bean.UserBean;
 import com.project.dao.IUserDao;
 import com.project.service.IUserService;
@@ -113,4 +114,6 @@ public class UserServiceImpl implements IUserService {
 
         return pageInfo;
     }
+
+
 }

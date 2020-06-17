@@ -35,6 +35,7 @@ public class SeekUserServelet extends HttpServlet {
         IUserService iStudentService = new UserServiceImpl();
         PageInfo<UserBean> userBean = iStudentService.showUserInfoList(currentPage,pageSize,usergrade);
 
+
         Gson gson = new Gson();
 
         String json = gson.toJson(userBean);

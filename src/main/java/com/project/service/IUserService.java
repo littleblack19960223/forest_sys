@@ -1,6 +1,7 @@
 package com.project.service;
 
 import com.github.pagehelper.PageInfo;
+import com.project.bean.Logbean;
 import com.project.bean.UserBean;
 
 import java.util.List;

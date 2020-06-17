@@ -14,7 +14,7 @@ import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
-@WebServlet(name = "addTalksServlet",value = "addTalks")
+@WebServlet(name = "addTalksServlet",value = "/addTalks")
 /**添加会商结果信息*/
 public class addTalksServlet extends HttpServlet {
     @Override

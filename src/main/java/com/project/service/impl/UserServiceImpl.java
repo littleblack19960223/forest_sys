@@ -6,6 +6,8 @@ import com.project.service.IUserService;
 import com.project.util.MyBatisUtil;
 import org.apache.ibatis.session.SqlSession;
 
+import java.util.List;
+
 /**
  * @author 23
  */
@@ -14,13 +16,13 @@ public class UserServiceImpl implements IUserService {
 
     /**
      * 根据传入的用户信息创建用户
-     * */
+     */
     @Override
     public int addUser(UserBean userBean) {
 
         int num = 0;
         try {
-        num = sqlSession.getMapper(IUserDao.class).adduser(userBean);
+            num = sqlSession.getMapper(IUserDao.class).adduser(userBean);
 
             sqlSession.commit();
         } catch (Exception e) {
@@ -40,8 +42,16 @@ public class UserServiceImpl implements IUserService {
     @Override
     public UserBean showUserInfo(String name) {
 
-//        UserBean userBean = sqlSession.getMapper(IUserDao.class).showUserInfo(name);
-        return null;
+        UserBean userBean = null;
+        try {
+            userBean = sqlSession.getMapper(IUserDao.class).showUserInfo(name);
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        } finally {
+            sqlSession.close();
+        }
+        return userBean;
     }
 
     /**
@@ -50,7 +60,43 @@ public class UserServiceImpl implements IUserService {
      */
     @Override
     public int updateUserInfo(UserBean userBean) {
-        int update = sqlSession.getMapper(IUserDao.class).updateUserInfo(userBean);
+        SqlSession sqlSession = MyBatisUtil.getSession();
+
+        int update = 0;
+        try {
+            update = sqlSession.getMapper(IUserDao.class).updateUserInfo(userBean);
+            sqlSession.commit();
+        } catch (Exception e) {
+            e.printStackTrace();
+            sqlSession.rollback();
+        } finally {
+            sqlSession.close();
+        }
+
         return update;
+    }
+
+    /**
+     * 传入用户名字，删除对应用户
+     * 回复1表示删除成功，0表示失败
+     */
+    @Override
+    public int removeuser(String username) {
+
+        int userBean = 0;
+        try {
+            userBean = sqlSession.getMapper(IUserDao.class).removeuser(username);
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        } finally {
+            sqlSession.close();
+        }
+        return userBean;
+    }
+
+    @Override
+    public List<UserBean> showUserInfoList(String usergrade) {
+        return null;
     }
 }

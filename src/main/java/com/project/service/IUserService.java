@@ -2,6 +2,8 @@ package com.project.service;
 
 import com.project.bean.UserBean;
 
+import java.util.List;
+
 /**
  * @author 23
  */
@@ -28,4 +30,9 @@ public interface IUserService {
      * 传入用户名字，删除对应用户
      */
     public int removeuser(String username);
+
+    /**
+     * 根据条件查询符合要求的数据，返回一个数组
+     */
+    public List<UserBean> showUserInfoList(String usergrade);
 }

@@ -19,7 +19,7 @@ public class RatsBean {
 //      主要措施
     private String measure;
 //      鼠害图片
-    private String ratsImg;
+    private String img;
 
     public int getId() {
         return id;
@@ -77,12 +77,12 @@ public class RatsBean {
         this.measure = measure;
     }
 
-    public String getRatsImg() {
-        return ratsImg;
+    public String getImg() {
+        return img;
     }
 
-    public void setRatsImg(String ratsImg) {
-        this.ratsImg = ratsImg;
+    public void setImg(String img) {
+        this.img = img;
     }
 
     @Override
@@ -95,7 +95,7 @@ public class RatsBean {
                 ", breed='" + breed + '\'' +
                 ", enemy='" + enemy + '\'' +
                 ", measure='" + measure + '\'' +
-                ", ratsImg='" + ratsImg + '\'' +
+                ", img='" + img + '\'' +
                 '}';
     }
 }

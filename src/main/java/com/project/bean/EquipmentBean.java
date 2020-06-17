@@ -10,7 +10,7 @@ public class EquipmentBean {
     private Integer equipmentId;
     //设备名称
     private String name;
-    //防治类型：1：鼠害，2：虫害
+    //防治类型：1：鼠害，2：虫害 3:病害
     private Integer genre;
     //防止类别：1：药剂，2：器械
     private Integer type;

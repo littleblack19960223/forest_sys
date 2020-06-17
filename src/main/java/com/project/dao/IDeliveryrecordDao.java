@@ -1,6 +1,7 @@
 package com.project.dao;
 
 import com.project.bean.DeliveryrecordBean;
+import com.project.bean.DeliveryrecordEquipmentBean;
 import com.project.dao.sqlProvider.DeliveryrecordSqlProvider;
 import org.apache.ibatis.annotations.Select;
 import org.apache.ibatis.annotations.SelectProvider;
@@ -36,10 +37,10 @@ public interface IDeliveryrecordDao {
 
     /**
      * 添加出库信息
-     * @param deliveryrecordBean 出库信息
+     * @param deliveryrecordEquipmentBean 出库信息
      * @return 受影响行数
      */
-    public int addDeliveryrecord(DeliveryrecordBean deliveryrecordBean);
+    public int addDeliveryrecord(DeliveryrecordEquipmentBean deliveryrecordEquipmentBean);
 
 
 

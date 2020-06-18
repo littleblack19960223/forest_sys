@@ -40,4 +40,8 @@ public interface IUserService {
      */
     public PageInfo<UserBean> showUserInfoList(String currentPage, String pageSize, String usergrade);
 
+    /**
+     * 根据传入的账号密码进行查找
+     */
+    public UserBean login(String username, String pwd);
 }

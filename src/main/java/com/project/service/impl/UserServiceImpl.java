@@ -114,6 +114,22 @@ public class UserServiceImpl implements IUserService {
 
         return pageInfo;
     }
+    /**
+     * 根据传入的账号密码进行查找
+     */
+    @Override
+    public UserBean login(String username, String pwd) {
+        UserBean userBean = null;
+        try {
+            userBean = sqlSession.getMapper(IUserDao.class).login(username,pwd);
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        } finally {
+            sqlSession.close();
+        }
+        return userBean;
+    }
 
 
 }

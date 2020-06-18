@@ -38,10 +38,16 @@ public interface IUserDao {
     @Delete("DELETE FROM t_user WHERE user_name=#{username}")
     public int removeuser(@Param(value = "username") String username);
 
-    @Select("SELECT user_name,user_password,user_grade,user_realname\n" +
+    @Select("SELECT user_name as username,user_password as userpwd,user_grade as usergrade,user_realname as userrealname\n" +
             "FROM t_user where user_grade like \"%\"#{usergrade} ")
     public List<UserBean> showUserInfoList(@Param(value = "usergrade") String usergrade);
     @Insert("INSERT INTO t_log(log_info,log_data) " +
             "VALUES (#{logbean.loginfo},#{logbean.logdata})")
     public int addlog(@Param(value = "logbean") Logbean logbean);
+    /**
+     * 根据传入的账号密码进行查找
+     */
+    @Select("SELECT user_name as username,user_password as userpwd,user_grade as usergrade,user_realname as userrealname " +
+            " FROM t_user where user_name=#{username} and user_password =#{pwd} ")
+    public UserBean login(@Param(value = "username") String username,@Param(value = "pwd") String pwd);
 }

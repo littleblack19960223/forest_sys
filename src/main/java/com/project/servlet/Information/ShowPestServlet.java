@@ -19,8 +19,11 @@ public class ShowPestServlet extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         System.out.println("进入showPest");
+        String curPage=request.getParameter("curPage");
+        String pageSize=request.getParameter("pageSize");
+
         IPestService iPestService=new PestServiceImpl();
-        PageInfo<PestBean> pageInfo =iPestService.showAllPest();
+        PageInfo<PestBean> pageInfo =iPestService.showAllPest(Integer.valueOf(curPage),Integer.valueOf(pageSize));
         Gson gson=new Gson();
         String json=gson.toJson(pageInfo);
         response.getWriter().print(json);

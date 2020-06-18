@@ -13,17 +13,16 @@ import java.util.Map;
 
 public class PestServiceImpl implements IPestService {
     @Override
-    public PageInfo<PestBean> showAllPest() {
+    public PageInfo<PestBean> showAllPest(Integer curPage,Integer pageSize) {
         SqlSession sqlSession= MyBatisUtil.getSession();
         IPestDao iPestDao=sqlSession.getMapper(IPestDao.class);
 
         PageInfo<PestBean> pageInfo=null;
-        PageHelper.startPage(1,5);
+        PageHelper.startPage(curPage,pageSize);
         List<PestBean> list=iPestDao.getAllPest();
         pageInfo=new PageInfo<PestBean>(list);
 
-        return pageInfo
-                ;
+        return pageInfo;
     }
 
     @Override

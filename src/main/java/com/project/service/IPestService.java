@@ -12,7 +12,7 @@ public interface IPestService {
      * 虫害一览信息
      * @return 分好页的虫害信息的集合
      */
-    public PageInfo<PestBean> showAllPest();
+    public PageInfo<PestBean> showAllPest(Integer curPage,Integer pageSize);
 
     /**
      * 添加新虫害信息

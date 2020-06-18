@@ -51,7 +51,13 @@
 
     </select>
     <insert id="addTalks" useGeneratedKeys="true" keyProperty="discussId">
-       INSERT into t_discuss VALUES(null,2,,'张三，李四','喂只狗')
+       INSERT into t_discuss VALUES(null,#{expId},#{discussdate},#{personnel},#{resultTxt})
+    </insert>
+    <insert id="addConnectExperts">
+        insert  into t_discuss_experts VALUES
+        <foreach item="ConnectExperts" collection="list"  separator=",">
+          (null ,#{expertsId},#{discussId})
+        </foreach>
     </insert>
 
 </mapper>

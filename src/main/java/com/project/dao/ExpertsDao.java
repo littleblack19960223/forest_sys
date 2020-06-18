@@ -1,5 +1,6 @@
 package com.project.dao;
 
+import com.project.bean.ConnectExperts;
 import com.project.bean.DiscussBean;
 import com.project.bean.ExpertsBean;
 import org.apache.ibatis.annotations.Param;
@@ -41,4 +42,6 @@ public interface ExpertsDao {
     List<ExpertsBean> shows(String disaster);
 /**添加专家会商的结果，并返回该条数据的id*/
     void addTalks(DiscussBean discussBean);
+    /**添加专家时，同时添加会谈结果对应的专家id*/
+    int  addConnectExperts(List<ConnectExperts> list);
 }

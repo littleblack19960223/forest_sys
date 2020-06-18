@@ -2,6 +2,7 @@ package com.project.service.impl;
 
 import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
+import com.project.bean.ConnectExperts;
 import com.project.bean.DiscussBean;
 import com.project.bean.EventBean;
 import com.project.bean.ExpertsBean;
@@ -12,6 +13,7 @@ import com.project.util.MyBatisUtil;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.session.SqlSession;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
@@ -62,8 +64,14 @@ public class ExpertsServiceImpl implements ExpertsService {
 
     @Override
     public void daleteExperts(Integer id) {
-        expertsDao.deleteExperts(id);
-        sqlSession.commit();
+        try {
+            expertsDao.deleteExperts(id);
+            sqlSession.commit();
+        } catch (Exception e) {
+            sqlSession.rollback();
+            e.printStackTrace();
+        }
+
     }
 
     @Override
@@ -72,7 +80,7 @@ public class ExpertsServiceImpl implements ExpertsService {
     }
 
     @Override
-    public PageInfo<EventBean> Incident(String curentPage,String pageSize) {
+    public PageInfo<EventBean> Incident(String curentPage, String pageSize) {
 
         int curentPage1 = Integer.parseInt(curentPage);
         int pageSize1 = Integer.parseInt(pageSize);
@@ -80,7 +88,7 @@ public class ExpertsServiceImpl implements ExpertsService {
         //使用mybatis的分页插件
         PageHelper.startPage(curentPage1, pageSize1);
         PageInfo<EventBean> pageInfo = null;
-            //调用事件接口的方法
+        //调用事件接口的方法
         IEventDao mapper = MyBatisUtil.getSession().getMapper(IEventDao.class);
         List<EventBean> eventByType = mapper.getEventByType();
         pageInfo = new PageInfo<EventBean>(eventByType);
@@ -96,10 +104,27 @@ public class ExpertsServiceImpl implements ExpertsService {
     }
 
     @Override
-    public int addTalks(DiscussBean discussBean,int[] expertsId) {
+    public int addTalks(DiscussBean discussBean, int[] expertsId) {
         //添加与结果相关联的专家
+
         //添加会商结果信息
-        expertsDao.addTalks(discussBean);
-        return 0;
+        try {
+            expertsDao.addTalks(discussBean);
+            int discussId = discussBean.getDiscussId();
+            List<ConnectExperts> list = new ArrayList<>();
+            for (int i : expertsId) {
+                ConnectExperts conn = new ConnectExperts(i, discussId);
+                list.add(conn);
+
+            }
+            int i = expertsDao.addConnectExperts(list);
+            sqlSession.commit();
+            return i;
+        } catch (Exception e) {
+
+            sqlSession.rollback();
+            e.printStackTrace();
+            return 0;
+        }
     }
 }

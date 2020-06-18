@@ -4,7 +4,9 @@ import com.project.bean.EventBean;
 import com.project.service.IEventService;
 import org.junit.Test;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 
 public class EventServiceImplTest {
@@ -32,7 +34,11 @@ public class EventServiceImplTest {
 
     @Test
     public void getEventByItem() {
-
+        Map<String,Object> map = new HashMap<>();
+        map.put("eventName","事");
+        map.put("state",2);
+        map.put("areaName","区");
+        System.out.println(service.getEventByItem(map));
     }
 
     @Test

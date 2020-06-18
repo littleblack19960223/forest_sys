@@ -30,7 +30,7 @@ public interface IEventService {
     /**
      * 模糊查询
      * */
-    public List<EventBean> getEventByItem(Map<String,String> map);
+    public List<EventBean> getEventByItem(Map<String,Object> map);
 
     /**
      * 查所有事件

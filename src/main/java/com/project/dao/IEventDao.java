@@ -29,7 +29,7 @@ public interface IEventDao {
     /**
      * 模糊查询
      * */
-    public List<EventBean> getEventByItem(Map<String,String> Map);
+    public List<EventBean> getEventByItem(Map<String,Object> Map);
 
     /**
      * 查所有事件

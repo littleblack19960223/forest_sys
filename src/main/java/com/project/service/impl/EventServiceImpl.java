@@ -41,7 +41,7 @@ public class EventServiceImpl implements IEventService {
     }
 
     @Override
-    public List<EventBean> getEventByItem(Map<String,String> map) {
+    public List<EventBean> getEventByItem(Map<String,Object> map) {
         List<EventBean> list = sqlSession.getMapper(IEventDao.class).getEventByItem(map);
         return list;
     }

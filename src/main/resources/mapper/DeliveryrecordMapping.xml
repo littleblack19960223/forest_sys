@@ -7,7 +7,6 @@
 
     <resultMap id="drMap" type="DeliveryrecordEquipmentBean">
         <id column="id" property="id"></id>
-        <result column="equipmentNnumber" property="equipmentNnumber"></result>
         <collection property="deliveryrecord" ofType="DeliveryrecordBean">
             <id column="deliveryrecordId" property="deliveryrecordId"></id>
             <result column="classeName" property="classeName"></result>
@@ -29,9 +28,9 @@
             tde.deliveryrecord_id as id,
             tde.id as deliveryrecord,
             tde.equipment_id as equipmentBean,
-            tde.d_e_num as equipmentNnumber,
             dr.deliveryrecord_id as deliveryrecordId,
-            dr.classes_id as classeName,
+-- 班级id名称，映射到 药剂机械出库记录对象 classeName 中
+            clas.classes_name as classeName,
             dr.t_user as userName,
             dr.t_date as date,
             em.equipment_id as equipmentId,
@@ -39,11 +38,14 @@
             em.t_genre as genre,
             em.t_type as type,
             em.t_purpose as purpose,
-            em.t_num as num
+-- 领取数量映射到原库存数量对象中
+            tde.d_e_num as num
+
         FROM t_deliveryrecord_equipment as tde
-             LEFT JOIN t_deliveryrecord as dr on tde.id = dr.deliveryrecord_id
+             LEFT JOIN t_deliveryrecord as dr on tde.deliveryrecord_id = dr.deliveryrecord_id
+             LEFT JOIN t_classes as clas on dr.classes_id = clas.classes_id
              LEFT JOIN t_equipment as em on tde.equipment_id =  em.equipment_id
-        WHERE tde.deliveryrecord_id = #{id}
+        WHERE dr.deliveryrecord_id = #{id}
     </select>
 
 </mapper>

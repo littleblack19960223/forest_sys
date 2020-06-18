@@ -26,6 +26,8 @@ public class QueryOutDeliveryrecordInfoServlet extends HttpServlet {
 
         List<DeliveryrecordEquipmentBean> list = iDeliveryrecordService.getDeliveryrecordEquipmentById(Integer.valueOf(id));
 
+        System.out.println(list);
+
         Gson gson = new Gson();
         String json = gson.toJson(list);
 

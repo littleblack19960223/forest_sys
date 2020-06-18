@@ -27,7 +27,7 @@ public class DeliveryrecordSqlProvider {
         }
 
         if (className != null && !"".equals(className)) {
-            sql += " and t_user = '" + className + "' ";
+            sql += " and cla.classes_name like '%" +className + "%' ";
         }
 
         return sql;

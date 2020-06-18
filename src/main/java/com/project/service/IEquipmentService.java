@@ -23,11 +23,11 @@ public interface IEquipmentService {
 
 
     /**
-     * 根据条件查询药剂信息
+     * 根据条件查询药剂信息,分页
      * @param map 条件集合
-     * @return 符合条件的list集合
+     * @return 符合条件的分页集合
      */
-    public List<EquipmentBean> queryEquipmentByCondition(Map<String,String> map);
+    public PageInfo<EquipmentBean> queryEquipmentByCondition(Map<String,String> map);
 
 
     /**

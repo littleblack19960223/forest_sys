@@ -46,8 +46,20 @@ public class DeliveryrecordServiceImpl implements IDeliveryrecordService {
 
 
     @Override
-    public List<DeliveryrecordBean> queryDeliveryrecordByCondition(Map<String, String> map) {
+    public PageInfo<DeliveryrecordBean> queryDeliveryrecordByCondition(Map<String, String> map) {
 
-        return iDeliveryrecordDao.getDeliveryrecordByCondition(map);
+
+        String currentPage = map.get("currentPage");
+        String pageSize = map.get("pageSize");
+
+        PageInfo<DeliveryrecordBean> pageInfo = null;
+
+        PageHelper.startPage(Integer.valueOf(currentPage),Integer.valueOf(pageSize));
+
+        List<DeliveryrecordBean> list = iDeliveryrecordDao.getDeliveryrecordByCondition(map);
+
+        pageInfo = new PageInfo<DeliveryrecordBean>(list);
+
+        return pageInfo;
     }
 }

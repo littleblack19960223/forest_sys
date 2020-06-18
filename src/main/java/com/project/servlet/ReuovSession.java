@@ -17,11 +17,7 @@ public class ReuovSession extends HttpServlet {
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         HttpSession session = req.getSession();
         session.removeAttribute("user");
-//        Gson gson = new Gson();
 
-//        String json = gson.toJson(user);
-
-//        resp.getWriter().print(json);
     }
 
     @Override

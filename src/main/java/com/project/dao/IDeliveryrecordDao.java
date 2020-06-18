@@ -4,6 +4,7 @@ import com.github.pagehelper.PageInfo;
 import com.project.bean.DeliveryrecordBean;
 import com.project.bean.DeliveryrecordEquipmentBean;
 import com.project.dao.sqlProvider.DeliveryrecordSqlProvider;
+import org.apache.ibatis.annotations.Param;
 import org.apache.ibatis.annotations.Select;
 import org.apache.ibatis.annotations.SelectProvider;
 
@@ -43,6 +44,14 @@ public interface IDeliveryrecordDao {
      * @return 受影响行数
      */
     public int addDeliveryrecord(DeliveryrecordEquipmentBean deliveryrecordEquipmentBean);
+
+
+    /**
+     * 根据出库器械表id 查询出库信息
+     * @param id 出库表id
+     * @return 出库信息集合
+     */
+    public List<DeliveryrecordEquipmentBean> getDeliveryrecordEquipmentById(@Param(value = "id") int id);
 
 
 

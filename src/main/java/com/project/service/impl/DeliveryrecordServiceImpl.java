@@ -44,7 +44,6 @@ public class DeliveryrecordServiceImpl implements IDeliveryrecordService {
         return iDeliveryrecordDao.addDeliveryrecord(deliveryrecordEquipmentBean);
     }
 
-
     @Override
     public PageInfo<DeliveryrecordBean> queryDeliveryrecordByCondition(Map<String, String> map) {
 
@@ -61,5 +60,11 @@ public class DeliveryrecordServiceImpl implements IDeliveryrecordService {
         pageInfo = new PageInfo<DeliveryrecordBean>(list);
 
         return pageInfo;
+    }
+
+
+    @Override
+    public List<DeliveryrecordEquipmentBean> getDeliveryrecordEquipmentById(int id) {
+        return iDeliveryrecordDao.getDeliveryrecordEquipmentById(id);
     }
 }

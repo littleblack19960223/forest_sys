@@ -38,8 +38,12 @@ public interface IDeliveryrecordService {
     public int addDeliveryrecordInfo(DeliveryrecordEquipmentBean deliveryrecordEquipmentBean);
 
 
-
-
+    /**
+     * 根据出库器械表id 查询出库信息
+     * @param id 出库表id
+     * @return 出库信息集合
+     */
+    public List<DeliveryrecordEquipmentBean> getDeliveryrecordEquipmentById(int id);
 
 
 

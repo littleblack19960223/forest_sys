@@ -1,11 +1,9 @@
 package com.project.bean;
 
-import lombok.Data;
 
 /**
  * 药剂机械出库记录
  */
-@Data
 public class DeliveryrecordBean {
 
     //主键id

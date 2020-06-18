@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.project.dao.IDeliveryrecordDao">
+
+    <resultMap id="drMap" type="DeliveryrecordEquipmentBean">
+        <id column="id" property="id"></id>
+        <result column="equipmentNnumber" property="equipmentNnumber"></result>
+        <collection property="deliveryrecord" ofType="DeliveryrecordBean">
+            <id column="deliveryrecordId" property="deliveryrecordId"></id>
+            <result column="classeName" property="classeName"></result>
+            <result column="userName" property="userName"></result>
+            <result column="date" property="date"></result>
+        </collection>
+        <collection property="equipmentBean" ofType="EquipmentBean">
+            <id column="equipmentId" property="equipmentId"></id>
+            <result column="name" property="name"></result>
+            <result column="genre" property="genre"></result>
+            <result column="type" property="type"></result>
+            <result column="purpose" property="purpose"></result>
+            <result column="num" property="num"></result>
+        </collection>
+    </resultMap>
+
+    <select id="getDeliveryrecordEquipmentById" resultMap="drMap">
+        SELECT
+            tde.deliveryrecord_id as id,
+            tde.id as deliveryrecord,
+            tde.equipment_id as equipmentBean,
+            tde.d_e_num as equipmentNnumber,
+            dr.deliveryrecord_id as deliveryrecordId,
+            dr.classes_id as classeName,
+            dr.t_user as userName,
+            dr.t_date as date,
+            em.equipment_id as equipmentId,
+            em.t_name as name,
+            em.t_genre as genre,
+            em.t_type as type,
+            em.t_purpose as purpose,
+            em.t_num as num
+        FROM t_deliveryrecord_equipment as tde
+             LEFT JOIN t_deliveryrecord as dr on tde.id = dr.deliveryrecord_id
+             LEFT JOIN t_equipment as em on tde.equipment_id =  em.equipment_id
+        WHERE tde.deliveryrecord_id = #{id}
+    </select>
+
+</mapper>
+

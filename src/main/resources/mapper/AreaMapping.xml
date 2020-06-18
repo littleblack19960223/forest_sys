@@ -11,7 +11,7 @@
         <result column="area_goodTree" property="goodTree"></result>
         <result column="area_tree" property="tree"></result>
         <result column="area_type" property="type"></result>
-        <collection property="classesBeans" ofType="ClassesBean" column="id">
+        <collection property="classesBeans" ofType="ClassesBean">
             <id column="classes_id" property="classId"></id>
             <result column="classes_name" property="name"></result>
             <result column="classes_person" property="person"></result>
@@ -22,7 +22,7 @@
     </resultMap>
 
     <select id="getAreaByItem" resultMap="areaMap" parameterType="map">
-        select * from t_area join t_classes where t_area.area_id = t_classes.area_id
+        select * from t_area LEFT JOIN t_classes ON t_area.area_id = t_classes.area_id where 1=1
         <if test="areaName != null">
             and t_area.area_name like "%"#{areaName}"%"
         </if>
@@ -39,7 +39,7 @@
     </insert>
 
     <select id="getAllArea" resultMap="areaMap">
-        select * from t_area join t_classes WHERE t_area.area_id = t_classes.area_id
+       select * from t_area LEFT JOIN t_classes ON t_area.area_id = t_classes.area_id
     </select>
 
 </mapper>

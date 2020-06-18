@@ -39,33 +39,30 @@
             <result column="result" property="resultTxt"></result>
         </collection>
     </resultMap>
+
     <insert id="addEvent" parameterType="EventBean">
         insert into t_event values {null,#{areaBean.areaId},#{name},#{date},#{prevention},#{state},#{describe},#{loss},#{area},#{pathway},#{disasterType},#{picture},#{type}
     </insert>
+
     <update id="updateEvent">
         update t_event set event_state = #{param2},event_prevention=#{param3} where event_id = #{param1}
     </update>
+
     <update id="updateEventType">
         update t_event set event_type = #{param2} where event_id = #{param1}
     </update>
 
     <select id="getAllEvent" resultMap="eventMap">
-       SELECT * FROM  t_event join t_area join t_classes
-        WHERE t_event.area_id = t_area.area_id
-        and t_area.area_id = t_classes.area_id
+       SELECT * FROM  t_event LEFT join t_area ON t_event.area_id = t_area.area_id LEFT join t_classes  ON t_area.area_id = t_classes.area_id
     </select>
 
     <select id="getEventById" resultMap="eventMap" parameterType="int">
-      SELECT * FROM  t_event JOIN t_discuss JOIN t_classes JOIN t_area
-        WHERE t_event.event_id = t_discuss.event_id
-        and t_classes.area_id = t_area.area_id
-        and t_area.area_id = t_event.area_id
-        and t_event.event_id = #{id}
+      SELECT * FROM  t_event LEFT JOIN t_discuss on t_event.event_id = t_discuss.event_id LEFT JOIN t_area ON t_event.area_id = t_area.area_id LEFT JOIN t_classes ON t_area.area_id = t_classes.area_id
+
+        WHERE t_event.event_id = #{id}
     </select>
     <select id="getEventByItem" resultMap="eventMap" parameterType="map">
-      SELECT * FROM  t_event join t_area join t_classes
-        WHERE t_event.area_id = t_area.area_id
-        and t_area.area_id = t_classes.area_id
+        SELECT * FROM  t_event LEFT join t_area ON t_event.area_id = t_area.area_id LEFT join t_classes  ON t_area.area_id = t_classes.area_id where 1=1
         <if test="eventName != null">
             and t_event.event_name like "%"#{eventName}"%"
         </if>

@@ -23,11 +23,11 @@
 
 
     <select id="getAll" resultMap="classMap">
-        select * from t_classes join t_area where t_classes.area_id= t_area.area_id;
+        select * from t_classes left join t_area on t_classes.area_id= t_area.area_id
     </select>
 
     <select id="getClassesByItem" parameterType="map" resultMap="classMap">
-        select * from t_classes join t_area where t_classes.classes_id = t_area.area_id
+        select * from t_classes left join t_area on t_classes.area_id= t_area.area_id where 1=1
         <if test="classesName != null">
             and t_classes.classes_name like "%"#{classesName}"%"
         </if>
@@ -37,7 +37,7 @@
     </select>
 
     <select id="getClassesById" resultMap="classMap" parameterType="int">
-        select * from t_classes join t_area where t_classes.area_id= t_area.area_id and t_classes.classes_id=#{id};
+       select * from t_classes left join t_area on t_classes.area_id= t_area.area_id where t_classes.classes_id = #{id}
     </select>
 
     <insert id="addClasses" parameterType="ClassesBean">

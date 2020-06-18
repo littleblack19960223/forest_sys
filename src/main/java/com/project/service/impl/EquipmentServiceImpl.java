@@ -41,9 +41,20 @@ public class EquipmentServiceImpl implements IEquipmentService {
     }
 
     @Override
-    public List<EquipmentBean> queryEquipmentByCondition(Map<String, String> map) {
+    public PageInfo<EquipmentBean> queryEquipmentByCondition(Map<String, String> map) {
 
-        return iEquipmentDao.getEquipmentByconditions(map);
+        PageInfo<EquipmentBean> pageInfo = null;
+
+        String currentPage = map.get("currentPage");
+        String pageSize = map.get("pageSize");
+
+        PageHelper.startPage(Integer.valueOf(currentPage),Integer.valueOf(pageSize));
+
+        List<EquipmentBean> equipmentByconditions = iEquipmentDao.getEquipmentByconditions(map);
+
+        pageInfo = new PageInfo<EquipmentBean>(equipmentByconditions);
+
+        return pageInfo;
     }
 
 

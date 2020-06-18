@@ -27,7 +27,7 @@ public interface IDeliveryrecordService {
      * @param map 查询条件
      * @return 符合条件集合
      */
-    public List<DeliveryrecordBean>  queryDeliveryrecordByCondition(Map<String,String> map);
+    public PageInfo<DeliveryrecordBean>  queryDeliveryrecordByCondition(Map<String,String> map);
 
 
     /**

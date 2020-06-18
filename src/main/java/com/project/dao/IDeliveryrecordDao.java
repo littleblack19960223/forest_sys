@@ -1,5 +1,6 @@
 package com.project.dao;
 
+import com.github.pagehelper.PageInfo;
 import com.project.bean.DeliveryrecordBean;
 import com.project.bean.DeliveryrecordEquipmentBean;
 import com.project.dao.sqlProvider.DeliveryrecordSqlProvider;

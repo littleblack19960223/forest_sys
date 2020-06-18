@@ -1,5 +1,6 @@
 package com.project.servlet.equipment;
 
+import com.github.pagehelper.PageInfo;
 import com.google.gson.Gson;
 import com.project.bean.EquipmentBean;
 import com.project.service.IEquipmentService;
@@ -25,17 +26,21 @@ public class EquipmentByConditionServlet extends HttpServlet {
         String name = request.getParameter("name");
         String genre = request.getParameter("genre");
         String type = request.getParameter("type");
+        String currentPage = request.getParameter("currentPage");
+        String pageSize = request.getParameter("pageSize");
 
         Map<String,String> map = new HashMap<>();
         map.put("name",name);
         map.put("genre",genre);
         map.put("type",type);
+        map.put("currentPage",currentPage);
+        map.put("pageSize",pageSize);
 
         IEquipmentService iEquipmentService = new EquipmentServiceImpl();
-        List<EquipmentBean> list = iEquipmentService.queryEquipmentByCondition(map);
+        PageInfo<EquipmentBean> PageInfo = iEquipmentService.queryEquipmentByCondition(map);
 
         Gson gson = new Gson();
-        String json = gson.toJson(list);
+        String json = gson.toJson(PageInfo);
         response.getWriter().println(json);
     }
 

@@ -1,5 +1,6 @@
 package com.project.servlet.equipment;
 
+import com.github.pagehelper.PageInfo;
 import com.google.gson.Gson;
 import com.project.bean.DeliveryrecordBean;
 import com.project.service.IDeliveryrecordService;
@@ -25,19 +26,23 @@ public class DeliveryrecordByConditionServlet extends HttpServlet {
         String startDate = request.getParameter("startDate");
         String endDate = request.getParameter("endDate");
         String className = request.getParameter("className");
+        String currentPage = request.getParameter("currentPage");
+        String pageSize = request.getParameter("pageSize");
 
         Map<String,String> map = new HashMap<String,String>();
 
         map.put("startDate",startDate);
         map.put("endDate",endDate);
         map.put("className",className);
+        map.put("currentPage",currentPage);
+        map.put("pageSize",pageSize);
 
         IDeliveryrecordService iDeliveryrecordService = new DeliveryrecordServiceImpl();
 
-        List<DeliveryrecordBean> deliveryrecordBeans = iDeliveryrecordService.queryDeliveryrecordByCondition(map);
+        PageInfo<DeliveryrecordBean> pageInfo = iDeliveryrecordService.queryDeliveryrecordByCondition(map);
 
         Gson gson = new Gson();
-        String json = gson.toJson(deliveryrecordBeans);
+        String json = gson.toJson(pageInfo);
         response.getWriter().println(json);
 
     }

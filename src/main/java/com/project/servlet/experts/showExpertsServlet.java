@@ -31,9 +31,12 @@ public class showExpertsServlet extends HttpServlet {
         String name = request.getParameter("name");
         String specialties = request.getParameter("specialties");
         String work = request.getParameter("work");
-        if ("".equals(name)){name=null;}else {name="%"+name+"%";}
-            if ("".equals(specialties)){specialties=null;}else {specialties="%"+specialties+"%";}
-             if ("".equals(work)){work=null;}else {work="%"+work+"%";}
+        if(name!=null){
+        if ("".equals(name)){name=null;}else {name="%"+name+"%";}}
+        if(specialties!=null){
+            if ("".equals(specialties)){specialties=null;}else {specialties="%"+specialties+"%";}}
+        if(work!=null){
+             if ("".equals(work)){work=null;}else {work="%"+work+"%";}}
 
 
         Map<String,String> map = new HashMap<>();

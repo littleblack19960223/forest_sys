@@ -32,7 +32,7 @@ public class showExpertsServlet extends HttpServlet {
         String specialties = request.getParameter("specialties");
         String work = request.getParameter("work");
         if(name!=null){
-        if ("".equals(name)){name=null;}else {name="%"+name+"%";}}
+        if ("".equals(name)){name=null;} else {name="%"+name+"%";}}
         if(specialties!=null){
             if ("".equals(specialties)){specialties=null;}else {specialties="%"+specialties+"%";}}
         if(work!=null){

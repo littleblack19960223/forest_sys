@@ -4,8 +4,6 @@
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
 <mapper namespace="com.project.dao.IEventDao">
-
-
     <resultMap id="eventMap" type="EventBean">
         <id property="eventId" column="event_id"></id>
         <result property="name" column="event_name"></result>
@@ -58,11 +56,10 @@
     </select>
 
     <select id="getEventById" resultMap="eventMap" parameterType="int">
-      SELECT * FROM  t_event JOIN t_discuss_experts JOIN t_discuss JOIN t_classes JOIN t_area
-        WHERE t_event.event_id = t_discuss_experts.experts_id
+      SELECT * FROM  t_event JOIN t_discuss JOIN t_classes JOIN t_area
+        WHERE t_event.event_id = t_discuss.event_id
         and t_classes.area_id = t_area.area_id
         and t_area.area_id = t_event.area_id
-        and t_discuss_experts.discuss_id = t_discuss.discuss_id
         and t_event.event_id = #{id}
     </select>
     <select id="getEventByItem" resultMap="eventMap" parameterType="map">
@@ -81,7 +78,7 @@
     </select>
     <select id="getEventByType" resultMap="eventMap">
         SELECT event_id,event_name,event_date,event_prevention,event_state,area_name from t_event
-        LEFT JOIN t_area ON t_event.area_id=t_area.area_id WHERE event_type=3
+        LEFT JOIN t_area ON t_event.area_id=t_area.area_id WHERE event_type=1
     </select>
 
 

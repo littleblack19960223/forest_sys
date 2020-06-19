@@ -54,6 +54,7 @@
 
     <select id="getAllEvent" resultMap="eventMap">
        SELECT * FROM  t_event LEFT join t_area ON t_event.area_id = t_area.area_id LEFT join t_classes  ON t_area.area_id = t_classes.area_id
+    LEFT JOIN t_discuss on t_event.event_id = t_discuss.event_id
     </select>
 
     <select id="getEventById" resultMap="eventMap" parameterType="int">

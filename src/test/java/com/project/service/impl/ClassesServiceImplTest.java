@@ -29,10 +29,9 @@ public class ClassesServiceImplTest {
     public void add(){
         ClassesBean classesBean = new ClassesBean();
         AreaBean areaBean = new AreaBean();
-        areaBean.setAreaId(1);
+        areaBean.setAreaId(11);
         classesBean.setName("测试添加");
         classesBean.setAreaBean(areaBean);
-
         int i = service.addClasses(classesBean);
         System.out.println(i);
     }

@@ -18,5 +18,5 @@ public class ClassesBean {
 
     private AreaBean areaBean;
 
-    private Date creat = new Date(System.currentTimeMillis());
+    private Date creat = new Date(System.currentTimeMillis());;
 }

@@ -34,7 +34,7 @@ public class AddServlet extends HttpServlet {
 
         //添加数据
         String expertsName = request.getParameter("expertsName");
-        String date1 = ("date");
+        String date1 =request.getParameter("date");
         //将字符串转化为时间类
         DateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
         Date parse = null;

@@ -16,7 +16,7 @@ import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.*;
 
-@WebServlet(name = "UploadServlet",value ="/upload")
+@WebServlet(name = "UploadServlet", value = "/upload")
 public class UploadServlet extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         if (ServletFileUpload.isMultipartContent(request)) {
@@ -46,6 +46,12 @@ public class UploadServlet extends HttpServlet {
                 }
 
                 String uploadPath = this.getServletContext().getRealPath("/upload");
+                File file = new File(uploadPath);
+                //如果文件夹不存在则创建
+                if (!file.exists() && !file.isDirectory()) {
+                    System.out.println("//不存在");
+                    file.mkdir();
+                }
                 FileItem fileItem = fileMap.get("file");
                 String fileName = fileItem.getName();
                 String suffix = fileName.substring(fileName.lastIndexOf("."));
@@ -58,8 +64,8 @@ public class UploadServlet extends HttpServlet {
                     FileUtils.forceDelete(outFile);
                 }
                 fileItem.write(outFile);
-                write(response,"/upload/"+fileName);
-                response.getWriter().print("/upload/"+fileName);
+                write(response, "/upload/" + fileName);
+                response.getWriter().print("/upload/" + fileName);
             } catch (FileUploadException e) {
                 e.printStackTrace();
                 write(response, e.getMessage());

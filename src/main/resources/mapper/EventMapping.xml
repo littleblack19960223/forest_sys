@@ -41,7 +41,7 @@
     </resultMap>
 
     <insert id="addEvent" parameterType="EventBean">
-        insert into t_event values {null,#{areaBean.areaId},#{name},#{date},#{prevention},#{state},#{describe},#{loss},#{area},#{pathway},#{disasterType},#{picture},#{type}
+        insert into t_event values (null,#{areaBean.areaId},#{name},#{date},#{prevention},#{state},#{describe},#{loss},#{area},#{pathWay},#{disasterType},#{picture},#{type})
     </insert>
 
     <update id="updateEvent">

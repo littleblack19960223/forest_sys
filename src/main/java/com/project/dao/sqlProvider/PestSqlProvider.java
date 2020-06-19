@@ -19,10 +19,10 @@ public class PestSqlProvider {
         String value1=map.get("pestName");
         String value2=map.get("pestHost");
 
-        if (value1 !=null && !value1.equals(" ")){
+        if (value1 !=null && !"".equals(value1)){
             sql+=" and pest_name like '%"+value1+"%'";
         }
-        if (value2!=null && !value2.equals(" ")){
+        if (value2 !=null && !"".equals(value2)){
             sql+=" and pest_host like '%"+value2+"%'";
         }
         return sql;

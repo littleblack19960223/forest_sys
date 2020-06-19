@@ -32,5 +32,5 @@ public interface IPestService {
      * @param conditon 查找条件
      * @return  分好页的虫害对象集合
      */
-    public List<PestBean>  showPestByCondition(Map<String,String> conditon);
+    public PageInfo<PestBean>  showPestByCondition(Map<String,String> conditon,Integer curPage,Integer pageSize);
 }

@@ -42,11 +42,15 @@ public class PestServiceImpl implements IPestService {
     }
 
     @Override
-    public List<PestBean> showPestByCondition(Map<String, String> conditon) {
+    public PageInfo<PestBean> showPestByCondition(Map<String, String> conditon,Integer curPage,Integer pageSize) {
         SqlSession sqlSession= MyBatisUtil.getSession();
         IPestDao iPestDao=sqlSession.getMapper(IPestDao.class);
 
+        PageInfo pageInfo=null;
+        PageHelper.startPage(curPage,pageSize);
 
-        return iPestDao.getPestListByNameOrHost(conditon);
+        pageInfo=new PageInfo(iPestDao.getPestListByNameOrHost(conditon));
+
+        return pageInfo;
     }
 }

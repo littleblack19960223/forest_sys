@@ -75,7 +75,7 @@
         </if>
     </select>
     <select id="getEventByType" resultMap="eventMap">
-        SELECT event_id,event_name,event_date,event_prevention,event_state,area_name from t_event
+        SELECT event_id,event_name,event_date,event_prevention,event_state,area_name,event_disaster_type from t_event
         LEFT JOIN t_area ON t_event.area_id=t_area.area_id WHERE event_type=1
     </select>
 

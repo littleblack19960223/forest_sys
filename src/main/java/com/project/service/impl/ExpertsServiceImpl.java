@@ -104,7 +104,7 @@ public class ExpertsServiceImpl implements ExpertsService {
     }
 
     @Override
-    public int addTalks(DiscussBean discussBean, int[] expertsId) {
+    public int addTalks(DiscussBean discussBean, List<Integer> expertsId) {
         //添加与结果相关联的专家
 
         //添加会商结果信息

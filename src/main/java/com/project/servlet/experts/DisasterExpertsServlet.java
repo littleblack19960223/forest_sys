@@ -22,6 +22,18 @@ public class DisasterExpertsServlet extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         String disaster = request.getParameter("disaster");
         //获得前端的数据灾害类型看是字符串还是数字字符串数字还要再转化
+        switch (disaster){
+            case "1":
+                disaster="虫害防治";
+                break;
+            case "2":
+                disaster="鼠害防治";
+                break;
+            case "3":
+                disaster="病害防治";
+                break;
+
+        }
         ExpertsServiceImpl expertsService = new ExpertsServiceImpl();
         List<ExpertsBean> list =expertsService.shows(disaster);
         Gson gson =new Gson();

@@ -59,4 +59,21 @@ public class ExpertsBean {
         this.work = work;
         this.mailbox = mailbox;
     }
+
+    @Override
+    public String toString() {
+        return "ExpertsBean{" +
+                "id=" + id +
+                ", expertsName='" + expertsName + '\'' +
+                ", date=" + date +
+                ", sex='" + sex + '\'' +
+                ", specialties='" + specialties + '\'' +
+                ", telephone='" + telephone + '\'' +
+                ", site='" + site + '\'' +
+                ", head='" + head + '\'' +
+                ", duty='" + duty + '\'' +
+                ", work='" + work + '\'' +
+                ", mailbox='" + mailbox + '\'' +
+                '}';
+    }
 }

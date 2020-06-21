@@ -22,8 +22,10 @@ import java.util.Map;
 public class EquipmentByIdServlet extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
+//        14,13,15
+
         String strId = request.getParameter("strId");
-        String[] split = strId.split("");
+        String[] split = strId.split(",");
 
         Map<Integer,String> map = new HashMap<>();
 

@@ -9,6 +9,8 @@ import com.project.service.IDeliveryrecordService;
 import com.project.util.MyBatisUtil;
 import org.apache.ibatis.session.SqlSession;
 
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.List;
 import java.util.Map;
 
@@ -38,11 +40,6 @@ public class DeliveryrecordServiceImpl implements IDeliveryrecordService {
         return pageInfo;
     }
 
-    @Override
-    public int addDeliveryrecordInfo(DeliveryrecordEquipmentBean deliveryrecordEquipmentBean) {
-
-        return iDeliveryrecordDao.addDeliveryrecord(deliveryrecordEquipmentBean);
-    }
 
     @Override
     public PageInfo<DeliveryrecordBean> queryDeliveryrecordByCondition(Map<String, String> map) {
@@ -62,9 +59,45 @@ public class DeliveryrecordServiceImpl implements IDeliveryrecordService {
         return pageInfo;
     }
 
-
     @Override
     public List<DeliveryrecordEquipmentBean> getDeliveryrecordEquipmentById(int id) {
         return iDeliveryrecordDao.getDeliveryrecordEquipmentById(id);
+    }
+
+    @Override
+    public int addDeliveryrecordInfo(Map<String, String> map, String classId, String outName) {
+
+        //首先添加 药剂机械出库表，deliveryrecord 并返回主键
+
+        int DRprincipal = 0; //返回主键
+        int n = -1; //受影响行数
+        try {
+            LocalDateTime localDateTime = LocalDateTime.now();
+            DateTimeFormatter dateTimeFormatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
+            String format = dateTimeFormatter.format(localDateTime);
+
+            DeliveryrecordBean deliveryrecordBean = new DeliveryrecordBean();
+            deliveryrecordBean.setClasseName(classId);
+            deliveryrecordBean.setUserName(outName);
+            deliveryrecordBean.setDate(format);
+
+            n = iDeliveryrecordDao.InseDeliveryrecordInfo(deliveryrecordBean);
+            DRprincipal = deliveryrecordBean.getDeliveryrecordId();
+
+            //添加 出库器械表  t_deliveryrecord_equipment
+            iDeliveryrecordDao.InseDRequipment(DRprincipal,map);
+
+            //根据设备id和出库数量，修改设备表库存  equipment
+            iDeliveryrecordDao.updataInventory(map);
+
+            sqlSession.commit();
+        } catch (Exception e) {
+            sqlSession.rollback();
+            e.printStackTrace();
+        } finally {
+            sqlSession.close();
+        }
+
+        return n;
     }
 }

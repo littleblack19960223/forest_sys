@@ -32,10 +32,12 @@ public interface IDeliveryrecordService {
 
     /**
      * 添加出库信息
-     * @param deliveryrecordEquipmentBean 出库信息
+     * @param map   key出库设备id  value出库数量
+     * @param classId 领用小班id
+     * @param outName 出库人
      * @return 受影响行数
      */
-    public int addDeliveryrecordInfo(DeliveryrecordEquipmentBean deliveryrecordEquipmentBean);
+    public int addDeliveryrecordInfo(Map<String,String> map,String classId, String outName);
 
 
     /**
@@ -44,6 +46,8 @@ public interface IDeliveryrecordService {
      * @return 出库信息集合
      */
     public List<DeliveryrecordEquipmentBean> getDeliveryrecordEquipmentById(int id);
+
+
 
 
 

@@ -1,4 +1,4 @@
-package com.project.servlet;
+package com.project.servlet.Information;
 
 import com.google.gson.Gson;
 import com.project.bean.PestBean;

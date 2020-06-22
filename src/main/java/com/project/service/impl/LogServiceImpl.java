@@ -1,10 +1,16 @@
 package com.project.service.impl;
 
+import com.github.pagehelper.PageHelper;
+import com.github.pagehelper.PageInfo;
+import com.project.bean.DeliveryrecordBean;
 import com.project.bean.Logbean;
 import com.project.dao.IUserDao;
 import com.project.service.ILogService;
 import com.project.util.MyBatisUtil;
 import org.apache.ibatis.session.SqlSession;
+
+import java.util.List;
+import java.util.Map;
 
 public class LogServiceImpl implements ILogService {
 
@@ -24,5 +30,26 @@ public class LogServiceImpl implements ILogService {
         }
 
         return num;
+    }
+
+    /**
+     * 查询日志信息
+     * @param map 查询条件
+     * @return 符合条件集合
+     */
+    @Override
+    public PageInfo<Logbean> showLogInfoList(Map<String, String> map) {
+        String currentPage = map.get("currentPage");
+        String pageSize = map.get("pageSize");
+
+        PageInfo<Logbean> pageInfo = null;
+
+        PageHelper.startPage(Integer.valueOf(currentPage),Integer.valueOf(pageSize));
+
+        List<Logbean> list = sqlSession.getMapper(IUserDao.class).showLogInfoList(map);
+
+        pageInfo = new PageInfo<Logbean>(list);
+
+        return pageInfo;
     }
 }

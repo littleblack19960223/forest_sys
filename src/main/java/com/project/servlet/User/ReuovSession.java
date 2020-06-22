@@ -1,4 +1,4 @@
-package com.project.servlet;
+package com.project.servlet.User;
 
 
 import javax.servlet.ServletException;

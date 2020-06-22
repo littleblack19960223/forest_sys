@@ -44,4 +44,8 @@ public interface IUserService {
      * 根据传入的账号密码进行查找
      */
     public UserBean login(String username, String pwd);
+    /**
+     * 根据传入的页数
+     */
+    public PageInfo<Logbean> showLogInfoList(String currentPage, String pageSize);
 }

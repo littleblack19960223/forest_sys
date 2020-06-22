@@ -1,4 +1,4 @@
-package com.project.servlet;
+package com.project.servlet.User;
 
 import com.google.gson.Gson;
 import com.project.bean.UserBean;
@@ -15,34 +15,35 @@ import java.io.IOException;
 /**
  * @author 23
  */
-@WebServlet(name = "AddUserServelet", value = "/adduser")
-public class AddUserServelet extends HttpServlet {
-
+@WebServlet(name = "UpdateUserServlet", value = "/updateuser")
+public class UpdateUserServlet extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+
         String username = request.getParameter("username");
         String userpwd = request.getParameter("userpwd");
         String newuserpwd = request.getParameter("newuserpwd");
-        String userrealname = request.getParameter("userrealname");
         String usergrade = request.getParameter("usergrade");
 
-//        判断两次密码是否一致
-        if (userpwd.equals(newuserpwd)) {
+        IUserService iStudentService = new UserServiceImpl();
+        UserBean userBean = iStudentService.showUserInfo(username);
 
-            IUserService userService = new UserServiceImpl();
-            UserBean userBean = new UserBean();
+        if (newuserpwd.equals(userpwd)) {
+
             userBean.setUsername(username);
-            userBean.setUserpwd(newuserpwd);
+            userBean.setUserpwd(userpwd);
             userBean.setUsergrade(usergrade);
-            userBean.setUserrealname(userrealname);
-//          添加用户
-            userService.addUser(userBean);
 
-            response.getWriter().print(1);
-
-        } else {
-            response.getWriter().print(-1);
+            iStudentService.updateUserInfo(userBean);
         }
+
+
+        Gson gson = new Gson();
+
+        String json = gson.toJson(userBean);
+
+        response.getWriter().print(json);
+
     }
 
     @Override

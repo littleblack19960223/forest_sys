@@ -1,6 +1,8 @@
-package com.project.servlet;
+package com.project.servlet.User;
 
+import com.github.pagehelper.PageInfo;
 import com.google.gson.Gson;
+import com.project.bean.Logbean;
 import com.project.bean.UserBean;
 import com.project.service.IUserService;
 import com.project.service.impl.UserServiceImpl;
@@ -11,39 +13,21 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
-
-/**
- * @author 23
- */
-@WebServlet(name = "UpdateUserServlet", value = "/updateuser")
-public class UpdateUserServlet extends HttpServlet {
+@WebServlet(name = "ShowLogServelet",value = "/showlog")
+public class ShowLogServelet extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-
-        String username = request.getParameter("username");
-        String userpwd = request.getParameter("userpwd");
-        String newuserpwd = request.getParameter("newuserpwd");
-        String usergrade = request.getParameter("usergrade");
+        String currentPage = request.getParameter("currentPage");
+        String pageSize = request.getParameter("pageSize");
 
         IUserService iStudentService = new UserServiceImpl();
-        UserBean userBean = iStudentService.showUserInfo(username);
-
-        if (newuserpwd.equals(userpwd)) {
-
-            userBean.setUsername(username);
-            userBean.setUserpwd(userpwd);
-            userBean.setUsergrade(usergrade);
-
-            iStudentService.updateUserInfo(userBean);
-        }
-
+        PageInfo<Logbean> userBean = iStudentService.showLogInfoList(currentPage,pageSize);
 
         Gson gson = new Gson();
 
         String json = gson.toJson(userBean);
 
         response.getWriter().print(json);
-
     }
 
     @Override

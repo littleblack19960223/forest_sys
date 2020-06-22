@@ -1,4 +1,4 @@
-package com.project.servlet;
+package com.project.servlet.User;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;

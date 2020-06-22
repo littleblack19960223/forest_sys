@@ -1,29 +1,31 @@
-package com.project.servlet;
+package com.project.servlet.User;
 
+import com.google.gson.Gson;
 import com.project.bean.UserBean;
-import com.project.service.IUserService;
-import com.project.service.impl.UserServiceImpl;
+import com.sun.net.httpserver.HttpsServer;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 import java.io.IOException;
 
 /**
  * @author 23
  */
-@WebServlet(name = "RemoveUserServelt",value = "/removeuser")
-public class RemoveUserServelt extends HttpServlet {
+@WebServlet(name = "GetSession",value = "/getsession")
+public class GetSession extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        HttpSession session = req.getSession();
+        UserBean user = (UserBean) session.getAttribute("user");
+        Gson gson = new Gson();
 
-        //传入需要删除对象的名字
-        String username = req.getParameter("username");
-        IUserService iStudentService = new UserServiceImpl();
-        int userBean = iStudentService.removeuser(username);
-        System.out.println(userBean);
+        String json = gson.toJson(user);
+
+        resp.getWriter().print(json);
     }
 
     @Override

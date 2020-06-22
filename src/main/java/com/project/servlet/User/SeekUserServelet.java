@@ -1,4 +1,4 @@
-package com.project.servlet;
+package com.project.servlet.User;
 
 import com.github.pagehelper.PageInfo;
 import com.google.gson.Gson;
@@ -34,7 +34,7 @@ public class SeekUserServelet extends HttpServlet {
         }
         IUserService iStudentService = new UserServiceImpl();
         PageInfo<UserBean> userBean = iStudentService.showUserInfoList(currentPage,pageSize,usergrade);
-
+        System.out.println(userBean);
 
         Gson gson = new Gson();
 

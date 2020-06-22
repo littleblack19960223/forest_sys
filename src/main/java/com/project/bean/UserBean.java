@@ -15,7 +15,7 @@ public class UserBean {
      */
     private Integer userid;
     /**
-     * 登录名称
+     * 用户名称
      */
     private String username;
     /**

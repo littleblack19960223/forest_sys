@@ -1,10 +1,14 @@
 package com.project.dao;
 
+import com.project.bean.DeliveryrecordBean;
 import com.project.bean.Logbean;
 import com.project.bean.UserBean;
+import com.project.dao.sqlProvider.DeliveryrecordSqlProvider;
+import com.project.dao.sqlProvider.Log;
 import org.apache.ibatis.annotations.*;
 
 import java.util.List;
+import java.util.Map;
 
 /**
  * @author 23
@@ -50,4 +54,17 @@ public interface IUserDao {
     @Select("SELECT user_name as username,user_password as userpwd,user_grade as usergrade,user_realname as userrealname " +
             " FROM t_user where user_name=#{username} and user_password =#{pwd} ")
     public UserBean login(@Param(value = "username") String username,@Param(value = "pwd") String pwd);
+    /**
+     * 查询日志信息
+     * @param map 查询条件
+     * @return 符合条件集合
+     */
+    @SelectProvider(type = Log.class,method = "log")
+    public List<Logbean> showLogInfoList(Map<String, String> map);
+    /**
+     * 查询日志信息
+     * @return 符合条件集合
+     */
+    @Select("SELECT log_info,log_data FROM t_log ")
+    List<Logbean> LogInfoList();
 }

@@ -90,9 +90,10 @@ public class UserServiceImpl implements IUserService {
         int userBean = 0;
         try {
             userBean = sqlSession.getMapper(IUserDao.class).removeuser(username);
-
+            sqlSession.commit();
         } catch (Exception e) {
             e.printStackTrace();
+            sqlSession.rollback();
         } finally {
             sqlSession.close();
         }
@@ -129,6 +130,24 @@ public class UserServiceImpl implements IUserService {
             sqlSession.close();
         }
         return userBean;
+    }
+    /**
+     * 根据传入的页数
+     */
+    @Override
+    public PageInfo<Logbean> showLogInfoList(String currentPage, String pageSize) {
+        //使用 pagehelper 分页插件
+        PageInfo<Logbean> pageInfo = null;
+
+        //定义分页规则
+        PageHelper.startPage(Integer.valueOf(currentPage),Integer.valueOf(pageSize));
+
+        //得到所有管理员
+        List<Logbean> beanList = sqlSession.getMapper(IUserDao.class).LogInfoList();
+        //进行分页
+        pageInfo = new PageInfo<Logbean>(beanList);
+
+        return pageInfo;
     }
 
 

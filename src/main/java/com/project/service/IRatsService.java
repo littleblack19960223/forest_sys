@@ -1,5 +1,6 @@
 package com.project.service;
 
+import com.github.pagehelper.PageInfo;
 import com.project.bean.RatsBean;
 import com.project.dao.sqlProvider.RatsSqlProvider;
 import org.apache.ibatis.annotations.Insert;
@@ -33,5 +34,5 @@ public interface IRatsService {
      * 根据鼠害名称查找鼠害集合
      * @return  鼠害集合
      */
-    public List<RatsBean> showRatsListByCondition(Map<String,String> condition2);
+    public PageInfo<RatsBean> showRatsListByCondition(Map<String,String> condition2,Integer curPage,Integer pageSize);
 }

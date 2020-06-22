@@ -28,7 +28,7 @@ public class RatsTest {
 
         Map<String,String> map=new HashMap<String,String>();
         map.put("ratsName","zx");
-        System.out.println(iRatsService.showRatsListByCondition(map));
+//        System.out.println(iRatsService.showRatsListByCondition(map));
 
     }
 }

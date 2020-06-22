@@ -1,5 +1,7 @@
 package com.project.service.impl;
 
+import com.github.pagehelper.PageHelper;
+import com.github.pagehelper.PageInfo;
 import com.project.bean.RatsBean;
 import com.project.dao.IDiseaseDao;
 import com.project.dao.IRatsDao;
@@ -46,10 +48,14 @@ public class RatsServiceImpl implements IRatsService {
     }
 
     @Override
-    public List<RatsBean> showRatsListByCondition(Map<String, String> condition2) {
+    public PageInfo<RatsBean> showRatsListByCondition(Map<String, String> condition2,Integer curPage,Integer pageSize) {
         SqlSession sqlSession= MyBatisUtil.getSession();
         IRatsDao iRatsDao=sqlSession.getMapper(IRatsDao.class);
 
-        return iRatsDao.getRatsListByName(condition2);
+        PageInfo pageInfo=null;
+        PageHelper.startPage(curPage,pageSize);
+
+        pageInfo=new PageInfo(iRatsDao.getRatsListByName(condition2));
+        return pageInfo;
     }
 }

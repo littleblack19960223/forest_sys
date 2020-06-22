@@ -56,8 +56,11 @@
     <insert id="addConnectExperts">
         insert  into t_discuss_experts VALUES
         <foreach item="ConnectExperts" collection="list"  separator=",">
-          (null ,#{expertsId},#{discussId})
+          (null,#{ConnectExperts.expertsId},#{ConnectExperts.discussId})
         </foreach>
     </insert>
+    <update id="updateEvent">
+        update t_event set event_type=2 where event_id = #{id}
+    </update>
 
 </mapper>

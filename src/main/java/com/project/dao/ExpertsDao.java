@@ -38,10 +38,22 @@ public interface ExpertsDao {
      * 根据id删除专家
      */
     void deleteExperts(Integer id);
-    /**根据灾害类型查询专家的信息*/
+
+    /**
+     * 根据灾害类型查询专家的信息
+     */
     List<ExpertsBean> shows(String disaster);
-/**添加专家会商的结果，并返回该条数据的id*/
+
+    /**
+     * 添加专家会商的结果，并返回该条数据的id
+     */
     void addTalks(DiscussBean discussBean);
-    /**添加专家时，同时添加会谈结果对应的专家id*/
-    int  addConnectExperts(List<ConnectExperts> list);
+
+    /**
+     * 添加专家时，同时添加会谈结果对应的专家id
+     */
+    int addConnectExperts(List<ConnectExperts> list);
+
+    /**添加会谈的结果时，修改会谈的结果*/
+    int updateEvent(int id);
 }

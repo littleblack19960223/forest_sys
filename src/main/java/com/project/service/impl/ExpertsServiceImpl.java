@@ -117,6 +117,7 @@ public class ExpertsServiceImpl implements ExpertsService {
                 list.add(conn);
 
             }
+            expertsDao.updateEvent(discussBean.getExpId());
             int i = expertsDao.addConnectExperts(list);
             sqlSession.commit();
             return i;

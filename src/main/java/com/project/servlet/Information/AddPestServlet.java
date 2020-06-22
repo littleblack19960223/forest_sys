@@ -22,6 +22,9 @@ public class AddPestServlet extends HttpServlet {
         String enemy=request.getParameter("pestEnemy");
         String measure=request.getParameter("pestMeasure");
         String harm=request.getParameter("pestHarm");
+        String larvaImg=request.getParameter("larvaImg");
+        String adultImg=request.getParameter("adultImg");
+
 
         PestBean pestBean=new PestBean();
         pestBean.setName(name);
@@ -30,8 +33,8 @@ public class AddPestServlet extends HttpServlet {
         pestBean.setBreed(breed);
         pestBean.setEnemy(enemy);
         pestBean.setMeasure(measure);
-        pestBean.setLarvaImg("path1");
-        pestBean.setAdultImg("path2");
+        pestBean.setLarvaImg(larvaImg);
+        pestBean.setAdultImg(adultImg);
 
         IPestService iPestService=new PestServiceImpl();
         Gson gson=new Gson();

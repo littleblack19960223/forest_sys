@@ -1,4 +1,4 @@
-package com.project.servlet;
+package com.project.servlet.Information;
 
 import org.apache.commons.fileupload.FileItem;
 import org.apache.commons.fileupload.FileUploadException;
@@ -16,8 +16,9 @@ import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.*;
 
-@WebServlet(name = "UploadSe", value = "/upload")
-public class UploadServlet extends HttpServlet {
+@WebServlet(name = "PestUploadServlet",value = "/pestUpload")
+public class PestUploadServlet extends HttpServlet {
+    @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         if (ServletFileUpload.isMultipartContent(request)) {
             try {
@@ -81,8 +82,9 @@ public class UploadServlet extends HttpServlet {
         }
     }
 
+    @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        doPost(request, response);
+            doPost(request,response);
     }
 
     private void write(HttpServletResponse response, String message) {

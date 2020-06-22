@@ -1,5 +1,6 @@
 package com.project.service;
 
+import com.github.pagehelper.PageInfo;
 import com.project.bean.DiseaseBean;
 import com.project.bean.PestBean;
 
@@ -31,5 +32,5 @@ public interface IDiseaseService {
      * @param conditon 查找条件
      * @return  病害对象集合
      */
-    public List<DiseaseBean>  showDiseaseByCondition(Map<String,String> conditon);
+    public PageInfo<DiseaseBean> showDiseaseByCondition(Map<String,String> conditon,Integer curPage,Integer pageSize);
 }

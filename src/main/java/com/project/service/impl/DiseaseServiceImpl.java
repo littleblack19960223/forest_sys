@@ -1,5 +1,7 @@
 package com.project.service.impl;
 
+import com.github.pagehelper.PageHelper;
+import com.github.pagehelper.PageInfo;
 import com.project.bean.DiseaseBean;
 import com.project.dao.IDiseaseDao;
 import com.project.dao.IPestDao;
@@ -45,10 +47,14 @@ public class DiseaseServiceImpl implements IDiseaseService {
     }
 
     @Override
-    public List<DiseaseBean> showDiseaseByCondition(Map<String, String> condition) {
+    public PageInfo<DiseaseBean> showDiseaseByCondition(Map<String, String> condition, Integer curPage, Integer pageSize) {
         SqlSession sqlSession= MyBatisUtil.getSession();
         IDiseaseDao iDiseaseDao=sqlSession.getMapper(IDiseaseDao.class);
 
-        return iDiseaseDao.getDiseaseListByNameOrSymptom(condition);
+        PageInfo pageInfo=null;
+        PageHelper.startPage(curPage,pageSize);
+
+        pageInfo=new PageInfo(iDiseaseDao.getDiseaseListByNameOrSymptom(condition));
+        return pageInfo;
     }
 }

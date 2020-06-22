@@ -33,7 +33,7 @@ public class DiseaseTest {
         Map<String,String> map=new HashMap<String,String>();
         map.put("diseaseName","1");
         map.put("diseaseSymptom","t");
-        System.out.println(iDiseaseService.showDiseaseByCondition(map));
+//        System.out.println(iDiseaseService.showDiseaseByCondition(map));
 
     }
 }

@@ -65,6 +65,6 @@ public interface IUserDao {
      * 查询日志信息
      * @return 符合条件集合
      */
-    @Select("SELECT log_info,log_data FROM t_log ")
+    @Select("SELECT log_info as loginfo,log_data as logdata FROM t_log ")
     List<Logbean> LogInfoList();
 }

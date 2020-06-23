@@ -7,7 +7,7 @@ public class Log {
 
         String sql = "SELECT " +
                 " log_info as loginfo, " +
-                " log_data as logdata, " +
+                " log_data as logdata " +
                 " from t_log " +
                 " WHERE 1=1 ";
 
@@ -16,13 +16,13 @@ public class Log {
 
 
         if ((startDate != null && !"".equals(startDate))) {
-            sql += " and t_date >= '" + startDate + "' ";
+            sql += " and log_data >= '" + startDate + " 00:00:00' ";
         }
         if ((endDate != null && !"".equals(endDate))) {
-            sql += " and t_date <= '" + endDate + "' ";
+            sql += " and log_data <= '" + endDate + " 23:59:59' ";
         }
-
         return sql;
+
 
     }
 }

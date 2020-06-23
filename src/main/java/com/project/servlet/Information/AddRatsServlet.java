@@ -19,12 +19,13 @@ import java.io.IOException;
 public class AddRatsServlet extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        String name=request.getParameter("pestName");
-        String food=request.getParameter("pestFood");
-        String breed=request.getParameter("pestBreed");
-        String enemy=request.getParameter("pestEnemy");
-        String measure=request.getParameter("pestMeasure");
-        String harm=request.getParameter("pestHarm");
+        String name=request.getParameter("ratsName");
+        String food=request.getParameter("ratsFood");
+        String breed=request.getParameter("ratsBreed");
+        String enemy=request.getParameter("ratsEnemy");
+        String measure=request.getParameter("ratsMeasure");
+        String harm=request.getParameter("ratsHarm");
+        String img=request.getParameter("ratsImg");
 
         RatsBean ratsBean=new RatsBean();
         ratsBean.setName(name);
@@ -33,7 +34,7 @@ public class AddRatsServlet extends HttpServlet {
         ratsBean.setBreed(breed);
         ratsBean.setEnemy(enemy);
         ratsBean.setMeasure(measure);
-        ratsBean.setImg("");
+        ratsBean.setImg(img);
 
 
         IRatsService iRatsService=new RatsServiceImpl();

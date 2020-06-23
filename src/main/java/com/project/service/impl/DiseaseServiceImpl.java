@@ -4,7 +4,7 @@ import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
 import com.project.bean.DiseaseBean;
 import com.project.dao.IDiseaseDao;
-import com.project.dao.IPestDao;
+
 import com.project.service.IDiseaseService;
 import com.project.util.MyBatisUtil;
 import org.apache.ibatis.session.SqlSession;

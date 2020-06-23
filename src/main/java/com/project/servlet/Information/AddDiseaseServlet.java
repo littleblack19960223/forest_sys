@@ -15,7 +15,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
-@WebServlet(name = "AddDiseaseServlet")
+@WebServlet(name = "AddDiseaseServlet",value = "/addDisease")
 public class AddDiseaseServlet extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
@@ -25,7 +25,7 @@ public class AddDiseaseServlet extends HttpServlet {
         String pattern=request.getParameter("diseasePattern");
         String measure=request.getParameter("diseaseMeasure");
         String harm=request.getParameter("diseaseHarm");
-
+        String img=request.getParameter("diseaseImg");
         DiseaseBean diseaseBean=new DiseaseBean();
 
         diseaseBean.setName(name);
@@ -34,7 +34,7 @@ public class AddDiseaseServlet extends HttpServlet {
         diseaseBean.setCause(cause);
         diseaseBean.setSymptom(symptom);
         diseaseBean.setMeasure(measure);
-        diseaseBean.setImg("");
+        diseaseBean.setImg(img);
 
 
         IDiseaseService iDiseaseService=new DiseaseServiceImpl();

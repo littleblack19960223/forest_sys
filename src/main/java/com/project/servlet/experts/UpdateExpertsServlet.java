@@ -44,6 +44,20 @@ public class UpdateExpertsServlet extends HttpServlet {
         }
         String sex = request.getParameter("sex");
         String specialties = request.getParameter("specialties");
+        String specialties1 = null;
+        switch (specialties) {
+            case "1":
+                specialties1 = "虫害防治";
+                break;
+            case "2":
+                specialties1 = "病害防治";
+                break;
+            case "3":
+                specialties1 = "鼠害防治";
+                break;
+
+
+        }
         String telephone = request.getParameter("telephone");
         String site = request.getParameter("site");
         String duty = request.getParameter("duty");
@@ -54,7 +68,7 @@ public class UpdateExpertsServlet extends HttpServlet {
         //看id 是否为空
         String id = request.getParameter("id");
         Integer expertsId = Integer.parseInt(id);
-        expertsBean = new ExpertsBean(expertsId, expertsName, new java.sql.Date(parse.getTime()), sex, specialties, telephone, site, head, duty, work, mailbox);
+        expertsBean = new ExpertsBean(expertsId, expertsName, new java.sql.Date(parse.getTime()), sex, specialties1, telephone, site, head, duty, work, mailbox);
 
         int i = new ExpertsServiceImpl().updateExperts(expertsBean);
         response.getWriter().print(i);

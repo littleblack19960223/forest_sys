@@ -35,7 +35,7 @@ public class AddOutDeliveryrecordInfoServlet extends HttpServlet {
 
         IDeliveryrecordService iDeliveryrecordService = new DeliveryrecordServiceImpl();
 
-        int n = iDeliveryrecordService.addDeliveryrecordInfo(map,classId,"张三");
+        int n = iDeliveryrecordService.addDeliveryrecordInfo(map,classId,outName);
 
         response.getWriter().println(n);
 

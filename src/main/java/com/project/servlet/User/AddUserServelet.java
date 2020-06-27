@@ -26,9 +26,6 @@ public class AddUserServelet extends HttpServlet {
         String userrealname = request.getParameter("userrealname");
         String usergrade = request.getParameter("usergrade");
 
-//        判断两次密码是否一致
-        if (userpwd.equals(newuserpwd)) {
-
             IUserService userService = new UserServiceImpl();
             UserBean userBean = new UserBean();
             userBean.setUsername(username);
@@ -40,9 +37,7 @@ public class AddUserServelet extends HttpServlet {
 
             response.getWriter().print(1);
 
-        } else {
-            response.getWriter().print(-1);
-        }
+
     }
 
     @Override

@@ -1,5 +1,6 @@
 package com.project.servlet.area;
 
+import com.github.pagehelper.PageInfo;
 import com.google.gson.Gson;
 import com.project.bean.AreaBean;
 import com.project.service.IAreaService;

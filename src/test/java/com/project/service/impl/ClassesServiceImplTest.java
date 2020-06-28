@@ -1,5 +1,6 @@
 package com.project.service.impl;
 
+import com.github.pagehelper.PageInfo;
 import com.project.bean.AreaBean;
 import com.project.bean.ClassesBean;
 import com.project.service.IClassesService;

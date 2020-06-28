@@ -1,5 +1,6 @@
 package com.project.servlet.event;
 
+import com.github.pagehelper.PageInfo;
 import com.google.gson.Gson;
 import com.project.bean.EventBean;
 import com.project.service.IEventService;
@@ -19,7 +20,10 @@ import java.util.Map;
 public class GetEventItemServlet extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         String name = request.getParameter("name");
-        Integer state = Integer.valueOf(request.getParameter("state"));
+        Integer state = null;
+        if(request.getParameter("state") != null && request.getParameter("state") != ""){
+           state = Integer.valueOf(request.getParameter("state"));
+        }
         String areaName = request.getParameter("areaName");
 
         Map<String,Object> map = new HashMap<>();

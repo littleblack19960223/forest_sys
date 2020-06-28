@@ -1,5 +1,6 @@
 package com.project.servlet.event;
 
+import com.github.pagehelper.PageInfo;
 import com.google.gson.Gson;
 import com.project.bean.EventBean;
 import com.project.service.IEventService;
@@ -18,13 +19,12 @@ public class GetAllEventServlet extends HttpServlet {
     protected void  doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         IEventService service = new EventServiceImpl();
 
+
         List<EventBean> list = service.getAllEvent();
 
         Gson gson = new Gson();
 
         String json = gson.toJson(list);
-
-        System.out.println(list);
 
         response.getWriter().print(json);
     }

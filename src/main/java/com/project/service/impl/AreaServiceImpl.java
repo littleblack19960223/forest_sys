@@ -2,7 +2,6 @@ package com.project.service.impl;
 
 import com.project.bean.AreaBean;
 import com.project.dao.IAreaDao;
-import com.project.dao.IEventDao;
 import com.project.service.IAreaService;
 import com.project.util.MyBatisUtil;
 import org.apache.ibatis.session.SqlSession;
@@ -16,7 +15,13 @@ public class AreaServiceImpl implements IAreaService {
 
     @Override
     public List<AreaBean> getAreaByItem(Map<String,String> map) {
+
+
+
         List<AreaBean> list = sqlSession.getMapper(IAreaDao.class).getAreaByItem(map);
+
+
+
         return list;
     }
 
@@ -29,7 +34,12 @@ public class AreaServiceImpl implements IAreaService {
 
     @Override
     public List<AreaBean> getAllArea() {
+
+
         List<AreaBean> list = sqlSession.getMapper(IAreaDao.class).getAllArea();
+
+
+
         return list;
     }
 

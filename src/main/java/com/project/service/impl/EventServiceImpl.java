@@ -1,5 +1,8 @@
 package com.project.service.impl;
 
+import com.github.pagehelper.PageHelper;
+import com.github.pagehelper.PageInfo;
+import com.project.bean.AreaBean;
 import com.project.bean.EventBean;
 import com.project.dao.IEventDao;
 import com.project.service.IEventService;
@@ -42,19 +45,35 @@ public class EventServiceImpl implements IEventService {
 
     @Override
     public List<EventBean> getEventByItem(Map<String,Object> map) {
+
         List<EventBean> list = sqlSession.getMapper(IEventDao.class).getEventByItem(map);
+
+
         return list;
+
     }
 
     @Override
     public List<EventBean> getAllEvent() {
+
+
         List<EventBean> list = sqlSession.getMapper(IEventDao.class).getAllEvent();
+
+
+
         return list;
     }
 
     @Override
     public List<EventBean> getEventByType() {
+
+
+
         List<EventBean> list = sqlSession.getMapper(IEventDao.class).getEventByType();
+
+
+
         return list;
+
     }
 }

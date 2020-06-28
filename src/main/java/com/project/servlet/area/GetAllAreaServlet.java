@@ -1,5 +1,6 @@
 package com.project.servlet.area;
 
+import com.github.pagehelper.PageInfo;
 import com.google.gson.Gson;
 import com.project.bean.AreaBean;
 import com.project.service.IAreaService;
@@ -16,10 +17,11 @@ import java.util.List;
 @WebServlet(name = "GetAllAreaServlet",value = "/getAllArea")
 public class GetAllAreaServlet extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        IAreaService service = new AreaServiceImpl();
-        List<AreaBean> list = service.getAllArea();
 
-        System.out.println(list.size());
+
+        IAreaService service = new AreaServiceImpl();
+
+        List<AreaBean> list = service.getAllArea();
 
         Gson gson = new Gson();
 

@@ -1,5 +1,6 @@
 package com.project.service;
 
+import com.github.pagehelper.PageInfo;
 import com.project.bean.EventBean;
 
 import java.util.List;

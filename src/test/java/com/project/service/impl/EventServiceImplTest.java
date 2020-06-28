@@ -64,13 +64,12 @@ public class EventServiceImplTest {
     public void getAllEvent() {
         List<EventBean> list = service.getAllEvent();
         System.out.println(list);
-        System.out.println(list.size());
+
     }
 
     @Test
     public void getEventByType() {
         List<EventBean> list = service.getEventByType();
         System.out.println(list);
-        System.out.println(list.size());
     }
 }

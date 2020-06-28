@@ -1,5 +1,6 @@
 package com.project.servlet.classes;
 
+import com.github.pagehelper.PageInfo;
 import com.google.gson.Gson;
 
 import com.project.bean.ClassesBean;
@@ -19,9 +20,9 @@ import java.util.List;
 public class GetAllClassesServlet extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         IClassesService service = new ClassesServiceImpl();
-        List<ClassesBean> list = service.getAll();
 
-        System.out.println(list.size());
+
+        List<ClassesBean> list = service.getAll();
 
         Gson gson = new Gson();
 

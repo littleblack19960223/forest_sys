@@ -1,5 +1,6 @@
 package com.project.servlet.classes;
 
+import com.github.pagehelper.PageInfo;
 import com.google.gson.Gson;
 import com.project.bean.ClassesBean;
 import com.project.service.IClassesService;
@@ -21,6 +22,7 @@ public class GetClassesItemServlet extends HttpServlet {
         IClassesService service = new ClassesServiceImpl();
         String name = request.getParameter("name");
         String area = request.getParameter("area");
+
 
         System.out.println(name);
         System.out.println(area);

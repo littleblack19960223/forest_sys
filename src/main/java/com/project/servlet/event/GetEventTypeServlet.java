@@ -1,5 +1,6 @@
 package com.project.servlet.event;
 
+import com.github.pagehelper.PageInfo;
 import com.google.gson.Gson;
 import com.project.bean.EventBean;
 import com.project.service.IEventService;
@@ -17,6 +18,7 @@ import java.util.List;
 public class GetEventTypeServlet extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         IEventService service = new EventServiceImpl();
+
 
         List<EventBean> list = service.getEventByType();
 
